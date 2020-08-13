@@ -3,6 +3,7 @@ import 'package:ligmone/constants.dart';
 import 'package:ligmone/size_config.dart';
 import '../components/default_button.dart';
 import '../components/splash_content.dart';
+import 'package:ligmone/homePage.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -66,7 +67,12 @@ class _BodyState extends State<Body> {
                     Spacer(flex: 3),
                     DefaultButton(
                       text: "Continue",
-                      press: () {},
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
+                      },
                     ),
                     Spacer(),
                   ],

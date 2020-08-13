@@ -3,7 +3,7 @@ import 'package:ligmone/splash/components/body.dart';
 import 'package:ligmone/size_config.dart';
 
 class SplashScreen extends StatelessWidget {
-  static String routeName = "/spllash";
+  static String routeName = "/splash";
   @override
   Widget build(BuildContext context) {
     // You have to call it on your starting screen
