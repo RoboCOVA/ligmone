@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "464117991425",
+    "firebase_url": "https://ligmone-project.firebaseio.com",
+    "project_id": "ligmone-project",
+    "storage_bucket": "ligmone-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464117991425:android:086ec44c82e42413185800",
+        "android_client_info": {
+          "package_name": "com.example.ligmone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464117991425-f12ril5ue1npjiclakf09sqi6n8vuum3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUQEBVspk3wyvN64XtCaCJOqF9vniDIr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464117991425-f12ril5ue1npjiclakf09sqi6n8vuum3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
