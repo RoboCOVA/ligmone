@@ -296,7 +296,7 @@ class _LoginPageState extends State<LoginPage> {
       // SizedBox(height: 50),
       _submitButtonnew(),
       _facebookButton(),
-      serviceProviders(),
+      //serviceProviders(),
       SizedBox(height: height * .055),
       // _createAccountLabel(),
     ];
@@ -305,10 +305,11 @@ class _LoginPageState extends State<LoginPage> {
       height: height,
       child: Stack(
         children: <Widget>[
-          Positioned(
-              top: -height * .15,
-              right: -MediaQuery.of(context).size.width * .4,
-              child: BezierContainer()),
+          //add shape here
+          // Positioned(
+          //     top: -height * .15,
+          //     right: -MediaQuery.of(context).size.width * .4,
+          //     child: BezierContainer()),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: SingleChildScrollView(
