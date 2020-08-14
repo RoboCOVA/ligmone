@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/signup.dart';
 import 'package:ligmone/states/currentUser.dart';
-import 'package:ligmone/utils/bezierContainer.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -267,7 +266,7 @@ class _LoginPageState extends State<LoginPage> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'l',
+          text: 'Li',
           style: GoogleFonts.portLligatSans(
             textStyle: Theme.of(context).textTheme.display1,
             fontSize: 30,
@@ -276,11 +275,11 @@ class _LoginPageState extends State<LoginPage> {
           ),
           children: [
             TextSpan(
-              text: 'an',
+              text: 'g',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'dsha',
+              text: 'mone',
               style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
             ),
           ]),
@@ -293,12 +292,9 @@ class _LoginPageState extends State<LoginPage> {
     var children2 = <Widget>[
       SizedBox(height: height * .2),
       _title(),
-      // SizedBox(height: 50),
       _submitButtonnew(),
       _facebookButton(),
-      //serviceProviders(),
       SizedBox(height: height * .055),
-      // _createAccountLabel(),
     ];
     return Scaffold(
         body: Container(

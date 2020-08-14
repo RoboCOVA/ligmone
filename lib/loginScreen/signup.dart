@@ -193,7 +193,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'l',
+          text: 'Li',
           style: GoogleFonts.portLligatSans(
             textStyle: Theme.of(context).textTheme.display1,
             fontSize: 35,
@@ -202,11 +202,11 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           children: [
             TextSpan(
-              text: 'an',
+              text: 'g',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'dsha',
+              text: 'mone',
               style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
             ),
           ]),

@@ -94,10 +94,10 @@ flutter:
           weight: 300
     - family: Roboto
       fonts:
-         - asset: fonts/Roboto-Regular.ttf
+         - asset: assets/fonts/Roboto-Regular.ttf
     - family: GoogleSans
       fonts:
-        - asset: fonts/GoogleSans-Regular.ttf
+        - asset: assets/fonts/GoogleSans-Regular.ttf
        
   #   - family: Trajan Pro
   #     fonts:
