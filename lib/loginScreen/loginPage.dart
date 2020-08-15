@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/signup.dart';
+import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/states/currentUser.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => BottomNavigationMenu(),
           ),
           (route) => false,
         );

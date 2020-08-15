@@ -1,50 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/style.dart';
-
 import 'loginScreen/applicationForm.dart';
 
-class HomePage extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-//change notification bar color
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.dark,
-      statusBarColor: Color(0XFFFEFEFE),
-    ));
-
-    return MaterialApp(
-      title: 'Ligmone',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        //set global text theme as fira sans
-        textTheme: GoogleFonts.firaSansTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      home: MyHomePage(title: 'Ligmone Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+class HomePage extends StatefulWidget {
+  final String title = 'Welcome to Ligmone';
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text('Welcome to Ligmone'),
+      // ),
       backgroundColor: Color(0XFFFEFEFE),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 16, top: 54, right: 16),

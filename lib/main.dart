@@ -3,7 +3,7 @@ import 'package:ligmone/root/root.dart';
 import 'package:ligmone/states/currentUser.dart';
 import 'package:ligmone/utils/appTheme.dart';
 import 'package:provider/provider.dart';
-
+//Run|Debug;
 void main() {
   runApp(MyApp());
 }

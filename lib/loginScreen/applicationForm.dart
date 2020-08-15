@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/homePage.dart';
+import 'package:ligmone/screens/bottomNavigation.dart';
 
 List<GlobalKey<FormState>> formKeys = [
+  GlobalKey<FormState>(),
   GlobalKey<FormState>(),
   GlobalKey<FormState>(),
   GlobalKey<FormState>(),
@@ -19,21 +22,42 @@ class MyData {
   String phone = '';
   String email = '';
   String age = '';
+  String uploaddoc = '';
 }
 
 class MyAppScreenMode extends State<ApplicationForm> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(
-          primarySwatch: Colors.lightGreen,
-        ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Ligmone'),
-          ),
-          body: StepperBody(),
-        ));
+    return Scaffold(
+      appBar: AppBar(
+          title: Text('Ligmone'),
+          automaticallyImplyLeading: true,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => BottomNavigationMenu(),
+                  ),
+                );
+              })),
+      body: StepperBody(),
+    );
+    //  child: Positioned(
+    //             top: 0.0,
+    //             left: 0.0,
+    //             right: 0.0,
+    //             child: AppBar(
+    //               title: Text(''),// You can add title here
+    //               leading: new IconButton(
+    //                 icon: new Icon(Icons.arrow_back_ios, color: Colors.grey),
+    //                 onPressed: () => Navigator.of(context).pop(),
+    //               ),
+    //               backgroundColor: Colors.blue.withOpacity(0.3), //You can make this transparent
+    //               elevation: 0.0, //No shadow
+    //             ),),
   }
 }
 
@@ -60,6 +84,7 @@ class _StepperBodyState extends State<StepperBody> {
   @override
   void dispose() {
     _focusNode.dispose();
+    _formKey.currentState?.dispose();
     super.dispose();
   }
 
@@ -167,12 +192,45 @@ class _StepperBodyState extends State<StepperBody> {
           ),
         )),
     Step(
+        title: const Text('Upload Documents'),
+        // subtitle: const Text('Subtitle'),
+        isActive: true,
+        state: StepState.indexed,
+        // state: StepState.disabled,
+        content: Form(
+          key: formKeys[3],
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                autocorrect: false,
+                // ignore: missing_return
+                validator: (value) {
+                  if (value.isEmpty || !value.contains('@')) {
+                    return 'Please enter add all Documents';
+                  }
+                },
+                onSaved: (String value) {
+                  data.email = value;
+                },
+                maxLines: 1,
+                decoration: InputDecoration(
+                    labelText: 'Enter your email',
+                    hintText: 'Enter a email address',
+                    icon: const Icon(Icons.email),
+                    labelStyle:
+                        TextStyle(decorationStyle: TextDecorationStyle.solid)),
+              ),
+            ],
+          ),
+        )),
+    Step(
         title: const Text('Confirm and Submit'),
         // subtitle: const Text('Subtitle'),
         isActive: true,
         state: StepState.indexed,
         content: Form(
-          key: formKeys[3],
+          key: formKeys[4],
           child: Column(
             children: <Widget>[
               TextFormField(

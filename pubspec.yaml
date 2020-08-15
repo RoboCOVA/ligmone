@@ -69,6 +69,15 @@ flutter:
   - assets/images/splash_1.png
   - assets/images/splash_2.png
   - assets/images/splash_3.png
+  - assets/finance.png
+  - assets/account.png
+  - assets/communication.png
+  - assets/data.png
+  - assets/management.png
+  - assets/payment.png
+  - assets/personalize.png
+  - assets/services.png
+
   
   #   - images/a_dot_ham.jpeg
 
