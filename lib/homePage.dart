@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/style.dart';
 
+import 'loginScreen/applicationForm.dart';
+
 class HomePage extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -15,7 +17,7 @@ class HomePage extends StatelessWidget {
     ));
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Ligmone',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -25,7 +27,7 @@ class HomePage extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Ligmone Home Page'),
     );
   }
 }
@@ -66,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                _menuItem('Loan \napplication', FontAwesomeIcons.dollarSign,
+                _menuItem('Shopping \nLoan', FontAwesomeIcons.dollarSign,
                     blueGradient),
                 _menuItem('Staff\nLoan', FontAwesomeIcons.cashRegister,
                     darkRedGradient),
@@ -162,15 +164,26 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(18),
-            child: Center(
-              child: Icon(iconData, size: 24, color: Colors.white),
+          InkWell(
+            child: Container(
+              padding: EdgeInsets.all(18),
+              child: Center(
+                child: Icon(iconData, size: 24, color: Colors.white),
+              ),
+              decoration: BoxDecoration(
+                gradient: gradient,
+                shape: BoxShape.circle,
+              ),
             ),
-            decoration: BoxDecoration(
-              gradient: gradient,
-              shape: BoxShape.circle,
-            ),
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ApplicationForm(),
+                ),
+                (route) => false,
+              );
+            },
           ),
           SizedBox(height: 8),
           Text(
