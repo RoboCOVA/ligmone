@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ligmone/homePage.dart';
 import 'package:ligmone/screens/userAccounts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -38,9 +39,10 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                   style: TextStyle(color: Colors.black),
                 )),
             BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard, color: Colors.deepOrange, size: 32),
+                icon: Icon(FontAwesomeIcons.creditCard,
+                    color: Colors.deepOrange, size: 32),
                 title: Text(
-                  'Dashboard',
+                  'Loans',
                   style: TextStyle(color: Colors.black),
                 )),
             BottomNavigationBarItem(

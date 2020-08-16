@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ligmone/screens/costPlan.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/style.dart';
-import 'loginScreen/applicationForm.dart';
 
 class HomePage extends StatefulWidget {
   final String title = 'Welcome to Ligmone';
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ApplicationForm(),
+                  builder: (context) => CostPlan(),
                 ),
                 (route) => false,
               );

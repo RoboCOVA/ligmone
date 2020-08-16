@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ligmone/homePage.dart';
-import 'package:ligmone/screens/bottomNavigation.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:ligmone/screens/bottomNavigation.dart';
+import 'package:ligmone/screens/costPlan.dart';
 
 List<GlobalKey<FormState>> formKeys = [
   GlobalKey<FormState>(),
@@ -30,34 +31,26 @@ class MyAppScreenMode extends State<ApplicationForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Ligmone'),
-          automaticallyImplyLeading: true,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => BottomNavigationMenu(),
+        title: Text('Ligmone'),
+        automaticallyImplyLeading: true,
+        backgroundColor: Colors.orangeAccent[300],
+        leading: IconButton(
+            icon: Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: Colors.white,
+            ),
+            onPressed: () => {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CostPlan(),
+                    ),
+                    (route) => false,
                   ),
-                );
-              })),
+                }),
+      ),
       body: StepperBody(),
     );
-    //  child: Positioned(
-    //             top: 0.0,
-    //             left: 0.0,
-    //             right: 0.0,
-    //             child: AppBar(
-    //               title: Text(''),// You can add title here
-    //               leading: new IconButton(
-    //                 icon: new Icon(Icons.arrow_back_ios, color: Colors.grey),
-    //                 onPressed: () => Navigator.of(context).pop(),
-    //               ),
-    //               backgroundColor: Colors.blue.withOpacity(0.3), //You can make this transparent
-    //               elevation: 0.0, //No shadow
-    //             ),),
   }
 }
 
@@ -325,17 +318,6 @@ class _StepperBodyState extends State<StepperBody> {
                 currStep = 0;
               }
             }
-            // else {
-            // Scaffold
-            //     .of(context)
-            //     .showSnackBar( SnackBar(content:  Text('$currStep')));
-
-            // if (currStep == 1) {
-            //   print('First Step');
-            //   print('object' + FocusScope.of(context).toStringDeep());
-            // }
-
-            // }
           });
         },
         onStepCancel: () {
