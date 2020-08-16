@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/applicationForm.dart';
+import 'package:ligmone/screens/bottomNavigation.dart';
 
 class CostPlan extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class _CostPlanState extends State<CostPlan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0XFFFEFEFE),
       appBar: AppBar(
         leading: IconButton(
             icon: Icon(
@@ -22,7 +24,7 @@ class _CostPlanState extends State<CostPlan> {
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomePage(),
+                      builder: (context) => BottomNavigationMenu(),
                     ),
                     (route) => false,
                   ),
@@ -78,7 +80,7 @@ class _CostPlanState extends State<CostPlan> {
                           //subText
                           Container(
                             child: Text(
-                              'This is standard hosting plan',
+                              'This is standard plan',
                               style: TextStyle(
                                 color: Colors.white54,
                                 fontSize: 20.0,
@@ -100,7 +102,7 @@ class _CostPlanState extends State<CostPlan> {
                                   children: <Widget>[
                                     Container(
                                       child: Text(
-                                        '\u00243.99',
+                                        '5.99%',
                                         style: TextStyle(
                                           fontSize: 30.0,
                                           color: Color(0xff8d70fe),
@@ -110,7 +112,7 @@ class _CostPlanState extends State<CostPlan> {
                                     ),
                                     Container(
                                       child: Text(
-                                        '/mo',
+                                        '/month',
                                         style: TextStyle(
                                           fontSize: 20.0,
                                           color: Color(0xff8d70fe),
@@ -135,11 +137,11 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   myRowDataIcon(
-                                      FontAwesomeIcons.database, "Databases"),
+                                      FontAwesomeIcons.database, "Amount"),
                                 ),
                                 DataCell(
                                   Text(
-                                    '30GB',
+                                    '<25,000\nETB',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -163,7 +165,7 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   myRowDataIcon(FontAwesomeIcons.folderOpen,
-                                      "Adons Domain"),
+                                      "Adons Services"),
                                 ),
                                 DataCell(
                                   Text(
@@ -191,7 +193,7 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   myRowDataIcon(FontAwesomeIcons.envelope,
-                                      "Custom Email"),
+                                      "Custom Insurance"),
                                 ),
                                 DataCell(
                                   Text(
@@ -288,7 +290,7 @@ class _CostPlanState extends State<CostPlan> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             child: Text(
-                                              '\u00244.99/month',
+                                              '8.99%\n/month',
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 30.0),
@@ -527,7 +529,7 @@ class _CostPlanState extends State<CostPlan> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             child: Text(
-                                              '\u00245.99/month',
+                                              '10.99%\n/month',
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 30.0),

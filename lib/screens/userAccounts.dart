@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/screens/userProfile.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class UserAccounts extends StatefulWidget {
@@ -54,7 +55,18 @@ class _UserAccountsState extends State<UserAccounts> {
                       ],
                     ),
                   )),
-              CustomListMenu(Icons.person, 'Profile', () => {}),
+              CustomListMenu(
+                Icons.person,
+                'Profile',
+                () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(),
+                    ),
+                  )
+                },
+              ),
               CustomListMenu(Icons.menu, 'Transactions', () => {}),
               CustomListMenu(MdiIcons.card, 'Bank Cards', () => {}),
               CustomListMenu(

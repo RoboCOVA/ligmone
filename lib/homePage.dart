@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 24),
             _introCard(),
-            _title('Features'),
+            _title('Products and Services'),
             SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,12 +66,31 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 12),
             _title('Special Pomotion'),
             SizedBox(height: 12),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                _promotionCard('New invite profit', 'assets/profit.png'),
-                _promotionCard('Cash back bonus', 'assets/cash-back.png'),
+                _promotionCard(
+                    'Loans...\n Refer Ligmone Loans. Make Money. Earn 300ETB\n When firends get a ligmone Personal Loan or Shopping Loan.\n They will get 300 ETB too!',
+                    'assets/profit.png'),
+                SizedBox(
+                  height: 10,
+                ),
+                _promotionCard(
+                    'Member Benefits...\nGet support for tackling money problems\n with your partner. There are alot of way to achieve your goals and needs\nGet help from our Financiers\n Make an an Appointment!',
+                    'assets/cash-back.png'),
+                SizedBox(
+                  height: 10,
+                ),
+                _promotionCard(
+                    'Member Experience...\nNo Stress with Ligmone \n Over 2,000 memebers registered for Webinar and virtual advice \n attend member event from anywhere!',
+                    'assets/experience.png'),
+                SizedBox(
+                  height: 10,
+                ),
+                _promotionCard(
+                    'Ligmone Blog...\nSaturday Shoppings, Tips and News!\nLearn more about Money and Finance, lEARN to Control!',
+                    'assets/financecontrol.jpg'),
               ],
             ),
             SizedBox(height: 48),
@@ -88,7 +107,8 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
         Container(
           height: 110,
-          width: MediaQuery.of(context).size.width / 2 - 30,
+          //width: MediaQuery.of(context).size.width / 2 - 30,
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               color: Color(0XFFDDFF3FF),
               borderRadius: BorderRadius.circular(12),
@@ -101,15 +121,19 @@ class _HomePageState extends State<HomePage> {
               ]),
           child: Align(
             alignment: Alignment.bottomCenter,
-            child: Image.asset(assetUrl, height: 80, fit: BoxFit.fitHeight),
+            child: FittedBox(
+              child: Image.asset(assetUrl),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         SizedBox(height: 12),
         Text(
           title,
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black54,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w800,
             fontSize: 14,
           ),
         )

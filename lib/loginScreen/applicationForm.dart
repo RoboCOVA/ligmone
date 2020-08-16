@@ -30,6 +30,7 @@ class MyAppScreenMode extends State<ApplicationForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0XFFFEFEFE),
       appBar: AppBar(
         title: Text('Ligmone'),
         automaticallyImplyLeading: true,
@@ -76,7 +77,7 @@ class _StepperBodyState extends State<StepperBody> {
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    // _focusNode.dispose();
     _formKey.currentState?.dispose();
     super.dispose();
   }
