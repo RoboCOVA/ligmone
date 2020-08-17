@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ligmone/homePage.dart';
+import 'package:ligmone/screens/LoansPage.dart';
 import 'package:ligmone/screens/userAccounts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'chatService.dart';
-import 'dashboardPage.dart';
 
 class BottomNavigationMenu extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     HomePage(),
-    DashboardPage(),
+    LoansPage(),
     ChatService(),
     UserAccounts(),
   ];

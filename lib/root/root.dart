@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ligmone/homePage.dart';
+import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/states/currentUser.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +45,7 @@ class _OurRootState extends State<OurRoot> {
         retVal = SplashScreen();
         break;
       case AuthStatus.loggedIn:
-        retVal = HomePage();
+        retVal = BottomNavigationMenu();
         break;
       default:
     }

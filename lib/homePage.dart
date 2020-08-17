@@ -122,8 +122,14 @@ class _HomePageState extends State<HomePage> {
           child: Align(
             alignment: Alignment.bottomCenter,
             child: FittedBox(
-              child: Image.asset(assetUrl),
-              fit: BoxFit.fill,
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.bottomCenter,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minWidth: 1, minHeight: 1), // here
+                child: Image.asset(
+                  assetUrl,
+                ),
+              ),
             ),
           ),
         ),

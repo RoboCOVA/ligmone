@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/signup.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/states/currentUser.dart';
