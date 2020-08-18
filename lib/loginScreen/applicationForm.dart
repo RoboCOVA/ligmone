@@ -30,7 +30,7 @@ class MyAppScreenMode extends State<ApplicationForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFFEFEFE),
+      //backgroundColor: Colors.,
       appBar: AppBar(
         title: Text('Ligmone'),
         automaticallyImplyLeading: true,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ligmone/screens/costPlan.dart';
 
 class LoansPage extends StatefulWidget {
   @override
@@ -20,13 +21,25 @@ class _LoansPageState extends State<LoansPage> {
           _introCard(),
           Expanded(
             child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: data.length,
-              itemBuilder: (BuildContext context, int index) => EntryItem(
-                data[index],
-              ),
-            ),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CostPlan(),
+                        ),
+                        (route) => false,
+                      );
+                    },
+                    child: EntryItem(
+                      data[index],
+                    ),
+                  );
+                }),
           ),
         ],
       ),
