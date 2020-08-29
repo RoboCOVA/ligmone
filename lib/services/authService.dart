@@ -7,9 +7,9 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:ligmone/models/user.dart';
-import 'package:ligmone/services/userDatabase.dart';
+import 'package:ligmone/services/databaseService.dart';
 
-class CurrentUser extends ChangeNotifier {
+class AuthService extends ChangeNotifier {
   OurUser _currentUser = OurUser();
 
 // Access email and password
@@ -18,6 +18,16 @@ class CurrentUser extends ChangeNotifier {
 // Instantiate  firebase
   FirebaseAuth _auth = FirebaseAuth.instance;
 
+// create user obj based on firebase User
+  OurUser _userFromFirebaseUser(FirebaseUser user) {
+    return user != null ? OurUser(uid: user.uid) : null;
+  }
+
+// auth change user stream
+  Stream<OurUser> get user {
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
+  }
+
   //   function to check whether user is logged in
   Future<String> onStartUp() async {
     String retVal = "error";
@@ -25,7 +35,7 @@ class CurrentUser extends ChangeNotifier {
     try {
       FirebaseUser _firebaseUser = await _auth.currentUser();
       if (_firebaseUser != null) {
-        _currentUser = await OurUserDatabase().getUserInfo(_firebaseUser.uid);
+        _currentUser = await DatabaseService().getUserInfo(_firebaseUser.uid);
         if (_currentUser != null) {
           retVal = "success";
         }
@@ -63,7 +73,7 @@ class CurrentUser extends ChangeNotifier {
       _user.email = _authResult.user.email;
       _user.firstName = firstName;
       _user.lastName = lastName;
-      String _returnString = await OurUserDatabase().createUser(_user);
+      String _returnString = await DatabaseService().createUser(_user);
 
       if (_returnString == "success") {
         retVal = "success";
@@ -81,7 +91,7 @@ class CurrentUser extends ChangeNotifier {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
 
-      _currentUser = await OurUserDatabase().getUserInfo(result.user.uid);
+      _currentUser = await DatabaseService().getUserInfo(result.user.uid);
       if (_currentUser != null) {
         retVal = "success";
       }
@@ -117,9 +127,9 @@ class CurrentUser extends ChangeNotifier {
           _user.email = profile['email'];
           _user.firstName = profile['first_name'];
           _user.lastName = profile['last_name'];
-          OurUserDatabase().createUser(_user);
+          DatabaseService().createUser(_user);
         }
-        _currentUser = await OurUserDatabase().getUserInfo(userResult.user.uid);
+        _currentUser = await DatabaseService().getUserInfo(userResult.user.uid);
         if (_currentUser != null) {
           retVal = "success";
         }
@@ -161,9 +171,9 @@ class CurrentUser extends ChangeNotifier {
 
         _user.firstName = splitDislayName[0];
         _user.lastName = splitDislayName[1];
-        OurUserDatabase().createUser(_user);
+        DatabaseService().createUser(_user);
       }
-      _currentUser = await OurUserDatabase().getUserInfo(result.user.uid);
+      _currentUser = await DatabaseService().getUserInfo(result.user.uid);
       if (_currentUser != null) {
         retVal = "success";
       }

@@ -68,7 +68,7 @@ class _CostPlanState extends State<CostPlan> {
                             padding: const EdgeInsets.only(top: 8.0),
                             child: Container(
                               child: Text(
-                                'Standard Plan',
+                                'Personal Loan',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 24.0,
@@ -80,7 +80,7 @@ class _CostPlanState extends State<CostPlan> {
                           //subText
                           Container(
                             child: Text(
-                              'This is standard plan',
+                              'Fixed Rates',
                               style: TextStyle(
                                 color: Colors.white54,
                                 fontSize: 20.0,
@@ -102,7 +102,7 @@ class _CostPlanState extends State<CostPlan> {
                                   children: <Widget>[
                                     Container(
                                       child: Text(
-                                        '5.99%',
+                                        '7.99%',
                                         style: TextStyle(
                                           fontSize: 30.0,
                                           color: Color(0xff8d70fe),
@@ -125,6 +125,7 @@ class _CostPlanState extends State<CostPlan> {
 
                           //Two Column Table
                           DataTable(
+                            columnSpacing: 20,
                             columns: <DataColumn>[
                               DataColumn(
                                 label: Text(''),
@@ -141,7 +142,7 @@ class _CostPlanState extends State<CostPlan> {
                                 ),
                                 DataCell(
                                   Text(
-                                    '<25,000\nETB',
+                                    '<100,000\nETB',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -151,11 +152,11 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   myRowDataIcon(
-                                      FontAwesomeIcons.users, "FTP users"),
+                                      FontAwesomeIcons.users, "Terms"),
                                 ),
                                 DataCell(
                                   Text(
-                                    '50',
+                                    '< 2 years',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -165,11 +166,11 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   myRowDataIcon(FontAwesomeIcons.folderOpen,
-                                      "Adons Services"),
+                                      "Service Fees"),
                                 ),
                                 DataCell(
                                   Text(
-                                    '5',
+                                    '300 ETB',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -193,11 +194,11 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   myRowDataIcon(FontAwesomeIcons.envelope,
-                                      "Custom Insurance"),
+                                      "Protection Insurance"),
                                 ),
                                 DataCell(
                                   Text(
-                                    '50',
+                                    '100 ETB',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -257,60 +258,54 @@ class _CostPlanState extends State<CostPlan> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           //Text
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: Container(
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            child: Icon(
-                                              FontAwesomeIcons.dropbox,
-                                              color: new Color(0xffffffff),
-                                              size: 40.0,
-                                            ),
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          child: Icon(
+                                            FontAwesomeIcons.businessTime,
+                                            color: new Color(0xffffffff),
+                                            size: 40.0,
                                           ),
                                         ),
-                                        Container(
-                                          child: Text(
-                                            'Plus',
-                                            style: TextStyle(
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          'Business\n',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 30.0,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          '\n9.99%\n/month',
+                                          style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 30.0,
-                                            ),
-                                          ),
+                                              fontSize: 30.0),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            child: Text(
-                                              '8.99%\n/month',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 30.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
 
                           //Two Column Table
                           DataTable(
+                            columnSpacing: 20,
                             columns: <DataColumn>[
                               DataColumn(
                                 label: Text(
-                                  'Storage',
+                                  'Amount',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16.0,
@@ -319,7 +314,7 @@ class _CostPlanState extends State<CostPlan> {
                               ),
                               DataColumn(
                                 label: Text(
-                                  '1TB',
+                                  '<1,000,000 ETB',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -332,7 +327,7 @@ class _CostPlanState extends State<CostPlan> {
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   Text(
-                                    'Smart synchronization',
+                                    'Revenue',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -340,16 +335,19 @@ class _CostPlanState extends State<CostPlan> {
                                   ),
                                 ),
                                 DataCell(
-                                  Icon(
-                                    FontAwesomeIcons.times,
-                                    color: Colors.white54,
+                                  Text(
+                                    '>200,000 ETB',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
                                   ),
                                 ),
                               ]),
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   Text(
-                                    'Full text search',
+                                    'Terms',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -357,16 +355,19 @@ class _CostPlanState extends State<CostPlan> {
                                   ),
                                 ),
                                 DataCell(
-                                  Icon(
-                                    FontAwesomeIcons.times,
-                                    color: Colors.white54,
+                                  Text(
+                                    '2- 3 years',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
                                   ),
                                 ),
                               ]),
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   Text(
-                                    'Folders without connection',
+                                    'Service Fees',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -374,29 +375,19 @@ class _CostPlanState extends State<CostPlan> {
                                   ),
                                 ),
                                 DataCell(
-                                  Icon(FontAwesomeIcons.check,
-                                      color: new Color(0xffffffff)),
-                                ),
-                              ]),
-                              DataRow(cells: <DataCell>[
-                                DataCell(
                                   Text(
-                                    'Uploads from camera',
+                                    ' 1000 ETB',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
                                     ),
                                   ),
-                                ),
-                                DataCell(
-                                  Icon(FontAwesomeIcons.check,
-                                      color: new Color(0xffffffff)),
-                                ),
+                                )
                               ]),
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   Text(
-                                    'Scanning of documents',
+                                    'Protection Insurance',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -420,15 +411,15 @@ class _CostPlanState extends State<CostPlan> {
                                 ),
                                 DataCell(
                                   Icon(
-                                    FontAwesomeIcons.times,
-                                    color: Colors.white54,
+                                    FontAwesomeIcons.check,
+                                    color: Color(0xffffffff),
                                   ),
                                 ),
                               ]),
                               DataRow(cells: <DataCell>[
                                 DataCell(
                                   Text(
-                                    'Custom Email',
+                                    'Business Advisory',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -517,7 +508,7 @@ class _CostPlanState extends State<CostPlan> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             child: Text(
-                                              'Flex',
+                                              'Enterprise',
                                               style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 30.0,
@@ -529,7 +520,7 @@ class _CostPlanState extends State<CostPlan> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             child: Text(
-                                              '10.99%\n/month',
+                                              '\n11.99%\n/month',
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 30.0),
@@ -546,25 +537,42 @@ class _CostPlanState extends State<CostPlan> {
 
                           //Two Column Table
                           DataTable(
+                            columnSpacing: 20,
                             columns: <DataColumn>[
                               DataColumn(
-                                label: Text(''),
+                                label: Text(
+                                  'Amount',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
                               ),
                               DataColumn(
-                                label: Text(''),
+                                label: Text(
+                                  '>1,000,000 ETB',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
                               ),
                             ],
                             rows: <DataRow>[
                               DataRow(cells: <DataCell>[
                                 DataCell(
-                                  Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
+                                  Text(
+                                    'Revenue',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
                                   ),
                                 ),
                                 DataCell(
                                   Text(
-                                    'Smart synchronization',
+                                    '>350000 ETB',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -574,14 +582,17 @@ class _CostPlanState extends State<CostPlan> {
                               ]),
                               DataRow(cells: <DataCell>[
                                 DataCell(
-                                  Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
+                                  Text(
+                                    'Terms',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
                                   ),
                                 ),
                                 DataCell(
                                   Text(
-                                    'Full text search',
+                                    '3 - 5 years',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
@@ -590,57 +601,56 @@ class _CostPlanState extends State<CostPlan> {
                                 ),
                               ]),
                               DataRow(cells: <DataCell>[
+                                DataCell(
+                                  Text(
+                                    'Service Fees',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                                DataCell(
+                                  Text(
+                                    ' 2000 ETB',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                )
+                              ]),
+                              DataRow(cells: <DataCell>[
+                                DataCell(
+                                  Text(
+                                    'Service Setup',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                                DataCell(
+                                  Icon(FontAwesomeIcons.check,
+                                      color: new Color(0xffffffff)),
+                                )
+                              ]),
+                              DataRow(cells: <DataCell>[
+                                DataCell(
+                                  Text(
+                                    'Protection Insurance',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
                                 DataCell(
                                   Icon(FontAwesomeIcons.check,
                                       color: new Color(0xffffffff)),
                                 ),
-                                DataCell(
-                                  Text(
-                                    'Folders without connection',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ),
                               ]),
                               DataRow(cells: <DataCell>[
-                                DataCell(
-                                  Icon(FontAwesomeIcons.check,
-                                      color: new Color(0xffffffff)),
-                                ),
-                                DataCell(
-                                  Text(
-                                    'Uploads from camera',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ),
-                              ]),
-                              DataRow(cells: <DataCell>[
-                                DataCell(
-                                  Icon(FontAwesomeIcons.check,
-                                      color: new Color(0xffffffff)),
-                                ),
-                                DataCell(
-                                  Text(
-                                    'Scanning of documents',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ),
-                              ]),
-                              DataRow(cells: <DataCell>[
-                                DataCell(
-                                  Icon(
-                                    FontAwesomeIcons.times,
-                                    color: Colors.white54,
-                                  ),
-                                ),
                                 DataCell(
                                   Text(
                                     '24/7 Support',
@@ -650,20 +660,26 @@ class _CostPlanState extends State<CostPlan> {
                                     ),
                                   ),
                                 ),
+                                DataCell(
+                                  Icon(
+                                    FontAwesomeIcons.check,
+                                    color: Color(0xffffffff),
+                                  ),
+                                ),
                               ]),
                               DataRow(cells: <DataCell>[
                                 DataCell(
-                                  Icon(FontAwesomeIcons.check,
-                                      color: new Color(0xffffffff)),
-                                ),
-                                DataCell(
                                   Text(
-                                    'Custom Email',
+                                    'Business Advisory',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16.0,
                                     ),
                                   ),
+                                ),
+                                DataCell(
+                                  Icon(FontAwesomeIcons.check,
+                                      color: new Color(0xffffffff)),
                                 ),
                               ]),
                             ],

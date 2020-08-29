@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ligmone/states/currentUser.dart';
+import 'package:ligmone/services/authService.dart';
 import 'package:ligmone/utils/bezierContainer.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
   // text field state
   void _signUpUser(String email, String password, BuildContext context,
       String firstName, String lastName) async {
-    CurrentUser _curretUser = Provider.of<CurrentUser>(context, listen: false);
+    AuthService _curretUser = Provider.of<AuthService>(context, listen: false);
     try {
       String _returnString =
           await _curretUser.signUpUser(email, password, firstName, lastName);

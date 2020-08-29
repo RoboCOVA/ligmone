@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  Color _lightGreen = Color.fromARGB(255, 213, 235, 220);
+  //Color _lightGreen = Color.fromARGB(255, 213, 235, 220);
+  Color _lightGreen = Color.fromARGB(255, 226, 238, 218);
   Color _lightGrey = Color.fromARGB(255, 164, 164, 164);
   Color _darkerGrey = Color.fromARGB(255, 119, 124, 135);
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/loginScreen/signup.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
-import 'package:ligmone/states/currentUser.dart';
+import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       String email,
       String password,
       BuildContext context}) async {
-    CurrentUser _currentUser = Provider.of<CurrentUser>(context, listen: false);
+    AuthService _currentUser = Provider.of<AuthService>(context, listen: false);
 
     try {
       String _returnString;

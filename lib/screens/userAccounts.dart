@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/screens/dashboardPage.dart';
 import 'package:ligmone/screens/userProfile.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -16,17 +17,17 @@ class _UserAccountsState extends State<UserAccounts> {
       minimum: EdgeInsets.fromLTRB(0.0, 14.0, 0.0, 0.0),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Ligmone"),
-          backgroundColor: Colors.deepOrange,
+          title: Text("Dashboard"),
+          // backgroundColor: Colors.deepOrange,
         ),
-        //body: _accountBody
+        body: DashboardPage(),
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
               DrawerHeader(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: <Color>[
-                    Colors.deepOrange,
+                    Colors.deepOrange[50],
                     Colors.orangeAccent
                   ])),
                   child: Container(

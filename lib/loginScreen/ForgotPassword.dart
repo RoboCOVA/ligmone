@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ligmone/states/currentUser.dart';
+import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 
 import 'loginPage.dart';
@@ -23,7 +23,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
-    CurrentUser _currentUser = Provider.of<CurrentUser>(context, listen: false);
+    AuthService _currentUser = Provider.of<AuthService>(context, listen: false);
 
     return Scaffold(
       // backgroundColor: Color(0XFF7A9BEE),

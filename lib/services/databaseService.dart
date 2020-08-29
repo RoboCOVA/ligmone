@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ligmone/models/user.dart';
 
-class OurUserDatabase {
+class DatabaseService {
   final Firestore _firestore = Firestore.instance;
 
   Future<String> createUser(OurUser user) async {

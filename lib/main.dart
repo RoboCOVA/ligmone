@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/root/root.dart';
-import 'package:ligmone/states/currentUser.dart';
+import 'package:ligmone/services/authService.dart';
 import 'package:ligmone/utils/appTheme.dart';
 import 'package:provider/provider.dart';
+
 //Run|Debug;
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CurrentUser(),
+      create: (context) => AuthService(),
       child: MaterialApp(
         title: 'LIGMONE',
         theme: AppTheme().buildTheme(),

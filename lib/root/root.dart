@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
-import 'package:ligmone/states/currentUser.dart';
+import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 
 import '../splash_screen.dart';
@@ -22,7 +22,7 @@ class _OurRootState extends State<OurRoot> {
     super.didChangeDependencies();
 
     // get the state, check current user, set AuthStatus based on state
-    CurrentUser _currentUser = Provider.of<CurrentUser>(context, listen: false);
+    AuthService _currentUser = Provider.of<AuthService>(context, listen: false);
     String _returnString = await _currentUser.onStartUp();
 
     if (_returnString == "success") {
