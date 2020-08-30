@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/screens/costPlan.dart';
 
 List<GlobalKey<FormState>> formKeys = [
+  GlobalKey<FormState>(),
   GlobalKey<FormState>(),
   GlobalKey<FormState>(),
   GlobalKey<FormState>(),
@@ -27,6 +29,7 @@ class MyData {
 }
 
 class MyAppScreenMode extends State<ApplicationForm> {
+  ScrollController _scrollController = new ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +53,7 @@ class MyAppScreenMode extends State<ApplicationForm> {
                   ),
                 }),
       ),
+
       body: StepperBody(),
     );
   }
@@ -84,7 +88,7 @@ class _StepperBodyState extends State<StepperBody> {
 
   List<Step> steps = [
     Step(
-        title: const Text('Loan Information'),
+        title: const Text('Personal Information'),
         //subtitle: const Text('Enter your name'),
         isActive: true,
         //state: StepState.error,
@@ -120,7 +124,7 @@ class _StepperBodyState extends State<StepperBody> {
           ),
         )),
     Step(
-        title: const Text('Personal Information'),
+        title: const Text('Your Income'),
         //subtitle: const Text('Subtitle'),
         isActive: true,
         //state: StepState.editing,
@@ -130,12 +134,12 @@ class _StepperBodyState extends State<StepperBody> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.number,
                 autocorrect: false,
                 // ignore: missing_return
                 validator: (value) {
                   if (value.isEmpty || value.length < 10) {
-                    return 'Please enter valid number';
+                    return 'Please enter your income';
                   }
                 },
                 onSaved: (String value) {
@@ -143,9 +147,9 @@ class _StepperBodyState extends State<StepperBody> {
                 },
                 maxLines: 1,
                 decoration: InputDecoration(
-                    labelText: 'Enter your number',
-                    hintText: 'Enter a number',
-                    icon: const Icon(Icons.phone),
+                    labelText: 'Enter your income',
+                    hintText: 'Enter an income',
+                    icon: const Icon(Icons.attach_money),
                     labelStyle:
                         TextStyle(decorationStyle: TextDecorationStyle.solid)),
               ),
@@ -153,7 +157,7 @@ class _StepperBodyState extends State<StepperBody> {
           ),
         )),
     Step(
-        title: const Text('Security Information'),
+        title: const Text('Assets Information'),
         // subtitle: const Text('Subtitle'),
         isActive: true,
         state: StepState.indexed,
@@ -163,12 +167,12 @@ class _StepperBodyState extends State<StepperBody> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.text,
                 autocorrect: false,
                 // ignore: missing_return
                 validator: (value) {
-                  if (value.isEmpty || !value.contains('@')) {
-                    return 'Please enter valid email';
+                  if (value.isEmpty) {
+                    return 'Please enter your assets, e.g house, apartment';
                   }
                 },
                 onSaved: (String value) {
@@ -176,9 +180,9 @@ class _StepperBodyState extends State<StepperBody> {
                 },
                 maxLines: 1,
                 decoration: InputDecoration(
-                    labelText: 'Enter your email',
-                    hintText: 'Enter a email address',
-                    icon: const Icon(Icons.email),
+                    labelText: 'Add your Asset',
+                    hintText: 'Please add your asset',
+                    icon: const Icon(Icons.home),
                     labelStyle:
                         TextStyle(decorationStyle: TextDecorationStyle.solid)),
               ),
@@ -186,7 +190,7 @@ class _StepperBodyState extends State<StepperBody> {
           ),
         )),
     Step(
-        title: const Text('Upload Documents'),
+        title: const Text('Add Existing Debt'),
         // subtitle: const Text('Subtitle'),
         isActive: true,
         state: StepState.indexed,
@@ -196,12 +200,12 @@ class _StepperBodyState extends State<StepperBody> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.number,
                 autocorrect: false,
                 // ignore: missing_return
                 validator: (value) {
-                  if (value.isEmpty || !value.contains('@')) {
-                    return 'Please enter add all Documents';
+                  if (value.isEmpty) {
+                    return 'Please enter add if you have a debt';
                   }
                 },
                 onSaved: (String value) {
@@ -209,9 +213,9 @@ class _StepperBodyState extends State<StepperBody> {
                 },
                 maxLines: 1,
                 decoration: InputDecoration(
-                    labelText: 'Enter your email',
-                    hintText: 'Enter a email address',
-                    icon: const Icon(Icons.email),
+                    labelText: 'add your debt',
+                    hintText: 'Enter your debt, if applicable',
+                    icon: const Icon(Icons.money_off),
                     labelStyle:
                         TextStyle(decorationStyle: TextDecorationStyle.solid)),
               ),
@@ -219,7 +223,7 @@ class _StepperBodyState extends State<StepperBody> {
           ),
         )),
     Step(
-        title: const Text('Confirm and Submit'),
+        title: const Text('Loan Amount'),
         // subtitle: const Text('Subtitle'),
         isActive: true,
         state: StepState.indexed,
@@ -232,8 +236,8 @@ class _StepperBodyState extends State<StepperBody> {
                 autocorrect: false,
                 // ignore: missing_return
                 validator: (value) {
-                  if (value.isEmpty || value.length > 2) {
-                    return 'Please enter valid age';
+                  if (value.isEmpty || value.length < 3) {
+                    return 'Please enter valid number';
                   }
                 },
                 maxLines: 1,
@@ -241,8 +245,8 @@ class _StepperBodyState extends State<StepperBody> {
                   data.age = value;
                 },
                 decoration: InputDecoration(
-                    labelText: 'Enter your age',
-                    hintText: 'Enter age',
+                    labelText: 'Enter Amount of loan',
+                    hintText: 'Enter Amount of loan',
                     icon: const Icon(Icons.explicit),
                     labelStyle:
                         TextStyle(decorationStyle: TextDecorationStyle.solid)),
@@ -250,12 +254,38 @@ class _StepperBodyState extends State<StepperBody> {
             ],
           ),
         )),
-    //  Step(
-    //     title: const Text('Fifth Step'),
-    //     subtitle: const Text('Subtitle'),
-    //     isActive: true,
-    //     state: StepState.complete,
-    //     content: const Text('Enjoy Step Fifth'))
+    Step(
+        title: const Text('Credit Report'),
+        // subtitle: const Text('Subtitle'),
+        isActive: true,
+        state: StepState.indexed,
+        content: Form(
+          key: formKeys[5],
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                keyboardType: TextInputType.text,
+                autocorrect: false,
+                // ignore: missing_return
+                validator: (value) {
+                  if (value.isEmpty || value.length > 4) {
+                    return 'Please enter valid number';
+                  }
+                },
+                maxLines: 1,
+                onSaved: (String value) {
+                  data.age = value;
+                },
+                decoration: InputDecoration(
+                    labelText: 'Enter Your Credit',
+                    hintText: 'Enter Your Credit Report',
+                    icon: const Icon(Icons.explicit),
+                    labelStyle:
+                        TextStyle(decorationStyle: TextDecorationStyle.solid)),
+              ),
+            ],
+          ),
+        )),
   ];
 
   @override
@@ -282,15 +312,13 @@ class _StepperBodyState extends State<StepperBody> {
             child: AlertDialog(
               title: Text("Details"),
               //content:  Text("Hello World"),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    Text("Name : " + data.name),
-                    Text("Phone : " + data.phone),
-                    Text("Email : " + data.email),
-                    Text("Age : " + data.age),
-                  ],
-                ),
+              content: ListBody(
+                children: <Widget>[
+                  Text("Name : " + data.name),
+                  Text("Phone : " + data.phone),
+                  Text("Email : " + data.email),
+                  Text("Age : " + data.age),
+                ],
               ),
               actions: <Widget>[
                 FlatButton(
@@ -305,45 +333,47 @@ class _StepperBodyState extends State<StepperBody> {
     }
 
     return Container(
-        child: ListView(children: <Widget>[
-      Stepper(
-        steps: steps,
-        type: StepperType.vertical,
-        currentStep: this.currStep,
-        onStepContinue: () {
-          setState(() {
-            if (formKeys[currStep].currentState.validate()) {
-              if (currStep < steps.length - 1) {
-                currStep = currStep + 1;
+      child: ListView(children: <Widget>[
+        Stepper(
+          physics: ClampingScrollPhysics(),
+          steps: steps,
+          type: StepperType.vertical,
+          currentStep: this.currStep,
+          onStepContinue: () {
+            setState(() {
+              if (formKeys[currStep].currentState.validate()) {
+                if (currStep < steps.length - 1) {
+                  currStep = currStep + 1;
+                } else {
+                  currStep = 0;
+                }
+              }
+            });
+          },
+          onStepCancel: () {
+            setState(() {
+              if (currStep > 0) {
+                currStep = currStep - 1;
               } else {
                 currStep = 0;
               }
-            }
-          });
-        },
-        onStepCancel: () {
-          setState(() {
-            if (currStep > 0) {
-              currStep = currStep - 1;
-            } else {
-              currStep = 0;
-            }
-          });
-        },
-        onStepTapped: (step) {
-          setState(() {
-            currStep = step;
-          });
-        },
-      ),
-      RaisedButton(
-        child: Text(
-          'Save details',
-          style: TextStyle(color: Colors.white),
+            });
+          },
+          onStepTapped: (step) {
+            setState(() {
+              currStep = step;
+            });
+          },
         ),
-        onPressed: _submitDetails,
-        color: Colors.blue,
-      ),
-    ]));
+        RaisedButton(
+          child: Text(
+            'Save details',
+            style: TextStyle(color: Colors.white),
+          ),
+          onPressed: _submitDetails,
+          color: Colors.blue,
+        ),
+      ]),
+    );
   }
 }

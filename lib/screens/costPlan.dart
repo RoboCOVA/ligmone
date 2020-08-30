@@ -31,7 +31,7 @@ class _CostPlanState extends State<CostPlan> {
                 }),
         title: Text("Plans"),
         actions: <Widget>[
-          IconButton(icon: Icon(FontAwesomeIcons.coins), onPressed: () {}),
+          // IconButton(icon: Icon(FontAwesomeIcons.coins), onPressed: () {}),
           IconButton(
               icon: Icon(FontAwesomeIcons.ellipsisV),
               onPressed: () {

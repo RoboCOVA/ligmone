@@ -26,10 +26,8 @@ class _UserAccountsState extends State<UserAccounts> {
             children: <Widget>[
               DrawerHeader(
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                    Colors.deepOrange[50],
-                    Colors.orangeAccent
-                  ])),
+                      gradient: LinearGradient(
+                          colors: <Color>[Colors.blue, Colors.blue[300]])),
                   child: Container(
                     child: Column(
                       children: [
