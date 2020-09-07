@@ -12,9 +12,9 @@ class _LoansPageState extends State<LoansPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0XFFFEFEFE),
-      appBar: AppBar(
-        title: const Text('Ligmone Products'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Ligmone Products'),
+      // ),
       body: Column(
         // padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
         children: <Widget>[

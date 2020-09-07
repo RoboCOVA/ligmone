@@ -15,7 +15,7 @@ class Dashboard extends StatelessWidget {
   final icons = [
     FontAwesomeIcons.moneyBill,
     FontAwesomeIcons.balanceScale,
-    FontAwesomeIcons.creditCard,
+    Icons.card_membership,
     Icons.account_balance,
     Icons.notifications,
     FontAwesomeIcons.moneyCheck,

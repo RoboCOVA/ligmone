@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ligmone/screens/dashboardPage.dart';
-import 'package:ligmone/screens/userProfile.dart';
+import 'package:ligmone/screens/user_profile.dart';
+import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class UserAccounts extends StatefulWidget {
@@ -11,15 +15,44 @@ class UserAccounts extends StatefulWidget {
 }
 
 class _UserAccountsState extends State<UserAccounts> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  // Instantiate  firebase
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _signOut() async {
+    try {
+      final googleSignIn = GoogleSignIn();
+      await googleSignIn.signOut();
+      final facebookLogin = FacebookLogin();
+      await facebookLogin.logOut();
+      await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> _confirmSignOut() async {
+    final didRequestSignOut = await PlatformAlertDialog(
+      title: 'Logout',
+      content: 'Are you sure that you want to logout?',
+      cancelActionText: 'Cancel',
+      defaultActionText: 'Logout',
+    ).show(context);
+    if (didRequestSignOut == true) {
+      _signOut();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       minimum: EdgeInsets.fromLTRB(0.0, 14.0, 0.0, 0.0),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Dashboard"),
-          // backgroundColor: Colors.deepOrange,
-        ),
+        key: _scaffoldKey,
+        // appBar: AppBar(
+        //     title: Text("Dashboard"),
+        //     leading: new IconButton(
+        //         icon: new Icon(Icons.account_circle),
+        //         onPressed: () => _scaffoldKey.currentState.openDrawer())),
         body: DashboardPage(),
         drawer: Drawer(
           child: ListView(
@@ -61,7 +94,7 @@ class _UserAccountsState extends State<UserAccounts> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ProfilePage(),
+                      builder: (context) => ProfilePagex(),
                     ),
                   )
                 },
@@ -75,7 +108,7 @@ class _UserAccountsState extends State<UserAccounts> {
               SizedBox(
                 height: 10.0,
               ),
-              CustomListMenu(Icons.lock, 'Log Out', () => {}),
+              CustomListMenu(Icons.lock, 'Log Out', () => {_confirmSignOut()}),
             ],
           ),
         ),
