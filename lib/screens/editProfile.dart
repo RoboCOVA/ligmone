@@ -190,7 +190,7 @@ class _SignUpPageState extends State<EditProfile> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'l',
+          text: 'Li',
           style: GoogleFonts.portLligatSans(
             textStyle: Theme.of(context).textTheme.display1,
             fontSize: 35,
@@ -199,11 +199,11 @@ class _SignUpPageState extends State<EditProfile> {
           ),
           children: [
             TextSpan(
-              text: 'an',
+              text: 'gm',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'dsha',
+              text: 'one',
               style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
             ),
           ]),

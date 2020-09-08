@@ -4,16 +4,16 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class LoanCharts extends StatefulWidget {
+  LoanCharts(this.title);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoanChartsState createState() => _LoanChartsState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoanChartsState extends State<LoanCharts> {
   var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0];
   var data1 = [0.0, -2.0, 3.5, -2.0, 0.5, 0.7, 0.8, 1.0, 2.0, 3.0, 3.2];
 
@@ -255,11 +255,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.arrow_back),
             onPressed: () {
-              //
+              Navigator.pop(context);
             }),
-        title: Text(widget.title),
+        title: Text(widget.title, textAlign: TextAlign.center),
         actions: <Widget>[
           IconButton(
               icon: Icon(FontAwesomeIcons.chartLine),
@@ -277,20 +277,20 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child:
-                  mychart1Items("Sales by Month", "421.3M", "+12.9% of target"),
+              child: mychart1Items(
+                  "Performance Progress", "2.29M", "+22.9% of target"),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: myCircularItems("Quarterly Profits", "68.7M"),
+              child: myCircularItems("Total Loan", "10.7M"),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: myTextItems("Mktg. Spend", "48.6M"),
+              child: myTextItems("Home Loan", "8.6M"),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: myTextItems("Users", "25.5M"),
+              child: myTextItems("Auto Loan", "2.1M"),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

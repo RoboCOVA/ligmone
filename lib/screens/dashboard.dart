@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ligmone/screens/loanAcoountChart.dart';
 
 class Dashboard extends StatelessWidget {
   final services = [
@@ -46,40 +47,50 @@ class Dashboard extends StatelessWidget {
                 childAspectRatio: MediaQuery.of(context).size.width /
                     (MediaQuery.of(context).size.height / 2.35)),
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                margin: EdgeInsets.all(4),
-                padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 2,
-                      blurRadius: 2,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoanCharts('Hello There'),
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 20,
-                    ),
-                    // Image.asset(images[index], height: 40, width: 40),
-                    Icon(icons[index], color: Colors.deepOrange, size: 32),
-
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        services[index],
-                        style: TextStyle(
-                            fontSize: 16,
-                            height: 1.2,
-                            fontWeight: FontWeight.normal),
-                        textAlign: TextAlign.center,
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.all(4),
+                  padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 2,
+                        blurRadius: 2,
                       ),
-                    )
-                  ],
+                    ],
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
+                      // Image.asset(images[index], height: 40, width: 40),
+                      Icon(icons[index], color: Colors.deepOrange, size: 32),
+
+                      Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          services[index],
+                          style: TextStyle(
+                              fontSize: 16,
+                              height: 1.2,
+                              fontWeight: FontWeight.normal),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               );
             }));
