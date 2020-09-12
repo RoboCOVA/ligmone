@@ -30,13 +30,15 @@ class MapScreenState extends State<ProfilePagex>
   @override
   void initState() {
     super.initState();
-
     // assign this variable your Future
     myFuture = getFuture();
-    var ref = FirebaseStorage.instance.ref().child('users');
-    ref.getDownloadURL().then((loc) => setState(() => _imageUrl = loc));
-    print(_imageUrl);
   }
+
+  // Future<String> returnImageUrl(String str) async {
+  //   final ref = FirebaseStorage.instance.ref().child('users/str');
+  //   String url = await ref.getDownloadURL() as String;
+  //   return url;
+  // }
 
   Future<FirebaseUser> getFuture() async {
     return _auth.currentUser();
@@ -65,7 +67,8 @@ class MapScreenState extends State<ProfilePagex>
               if (snapshot.connectionState == ConnectionState.done &&
                   snapshot.hasData) {
                 String userID = snapshot.data.uid;
-                var ref = FirebaseStorage.instance.ref().child('users/$userID');
+                var ref =
+                    FirebaseStorage.instance.ref().child('users/$userID.png');
                 ref
                     .getDownloadURL()
                     .then((loc) => setState(() => _imageUrl = loc));
@@ -115,7 +118,7 @@ class MapScreenState extends State<ProfilePagex>
                                                 height: 110.0,
                                               )
                                             : Image.network(
-                                                _imageUrl + '/$userID',
+                                                _imageUrl,
                                                 fit: BoxFit.cover,
                                                 // image: DecorationImage(
                                                 //   image: ExactAssetImage(
@@ -133,7 +136,6 @@ class MapScreenState extends State<ProfilePagex>
                                             MainAxisAlignment.center,
                                         children: <Widget>[
                                           CircleAvatar(
-                                            backgroundColor: Colors.red,
                                             radius: 25.0,
                                             child: RaisedButton(
                                               onPressed: () {

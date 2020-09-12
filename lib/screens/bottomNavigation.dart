@@ -21,6 +21,7 @@ class BottomNavigationMenu extends StatefulWidget {
 class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
+
   final List<Widget> _children = [
     HomePage(),
     LoansPage(),
@@ -130,40 +131,43 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-          onTap: onTabTapped,
-          currentIndex: _currentIndex,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.deepOrange,
-                  size: 32,
-                ),
-                title: Text(
-                  'Home',
-                  style: TextStyle(color: Colors.black),
-                )),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.insert_chart,
-                    color: Colors.deepOrange, size: 32),
-                title: Text(
-                  'Loans',
-                  style: TextStyle(color: Colors.black),
-                )),
-            BottomNavigationBarItem(
-                icon: Icon(MdiIcons.chat, color: Colors.deepOrange, size: 32),
-                title: Text(
-                  'Chat',
-                  style: TextStyle(color: Colors.black),
-                )),
-            BottomNavigationBarItem(
-                icon:
-                    Icon(Icons.credit_card, color: Colors.deepOrange, size: 32),
-                title: Text(
-                  'Money',
-                  style: TextStyle(color: Colors.black),
-                )),
-          ]),
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: true,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Colors.deepOrange,
+                size: 32,
+              ),
+              title: Text(
+                'Home',
+                style: TextStyle(color: Colors.black),
+              )),
+          BottomNavigationBarItem(
+              icon:
+                  Icon(Icons.insert_chart, color: Colors.deepOrange, size: 32),
+              title: Text(
+                'Loans',
+                style: TextStyle(color: Colors.black),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(MdiIcons.chat, color: Colors.deepOrange, size: 32),
+              title: Text(
+                'Chat',
+                style: TextStyle(color: Colors.black),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.credit_card, color: Colors.deepOrange, size: 32),
+              title: Text(
+                'Money',
+                style: TextStyle(color: Colors.black),
+              )),
+        ],
+        currentIndex: _currentIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: onTabTapped,
+      ),
     );
   }
 

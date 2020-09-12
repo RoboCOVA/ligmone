@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 
 class ImageCapture extends StatefulWidget {
   final String userID;
-
   ImageCapture(this.userID);
   createState() => _ImageCaptureState();
 }
@@ -67,7 +66,7 @@ class _ImageCaptureState extends State<ImageCapture> {
             RaisedButton(
                 color: Colors.orange[400],
                 child: Text(
-                  'Cancel',
+                  'Exit',
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
@@ -109,8 +108,7 @@ class _ImageCaptureState extends State<ImageCapture> {
 class Uploader extends StatefulWidget {
   final File file;
   final String userID;
-
-  Uploader({Key key, this.file, this.userID}) : super(key: key);
+  Uploader({this.file, this.userID});
   _UploaderState createState() => _UploaderState();
 }
 
@@ -145,7 +143,7 @@ class _UploaderState extends State<Uploader> {
 
             return Column(
               children: [
-                if (_uploadTask.isComplete) Text('Upload Done!'),
+                if (_uploadTask.isComplete) Text('Upload Done'),
 
                 if (_uploadTask.isPaused)
                   FlatButton(
@@ -168,7 +166,7 @@ class _UploaderState extends State<Uploader> {
     } else {
       // Allows user to decide when to start the upload
       return FlatButton.icon(
-        label: Text('Upload'),
+        label: Text('Upload Picture'),
         icon: Icon(Icons.cloud_upload),
         onPressed: _startUpload,
       );

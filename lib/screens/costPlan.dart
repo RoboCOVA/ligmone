@@ -92,7 +92,7 @@ class _CostPlanState extends State<CostPlan> {
                             padding: const EdgeInsets.only(top: 8.0),
                             child: Container(
                                 width: 150.0,
-                                height: 130.0,
+                                height: 120.0,
                                 decoration: new BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Colors.white,

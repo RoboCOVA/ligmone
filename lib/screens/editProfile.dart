@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ligmone/models/user.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditProfile extends StatefulWidget {
@@ -20,7 +19,6 @@ class _SignUpPageState extends State<EditProfile> {
   bool loading = false;
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  final Firestore _firestore = Firestore.instance;
   Future myFuture;
   @override
   void initState() {
@@ -32,24 +30,6 @@ class _SignUpPageState extends State<EditProfile> {
 
   Future<FirebaseUser> getFuture() async {
     return _auth.currentUser();
-  }
-
-  Future<String> createUser(OurUser user) async {
-    String retVal = "error";
-    var firebaseUser = await FirebaseAuth.instance.currentUser();
-    try {
-      await _firestore.collection("users").document(firebaseUser.uid).setData({
-        'firstName': user.firstName,
-        'lastName': user.lastName,
-        'email': user.email,
-        'accountCreate': Timestamp.now(),
-      });
-      retVal = "success";
-    } catch (e) {
-      print(e);
-    }
-
-    return retVal;
   }
 
   Widget _backButton() {
