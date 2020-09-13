@@ -11,6 +11,7 @@ import 'package:ligmone/screens/user_profile.dart';
 import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../constants.dart';
 import 'chatService.dart';
 
 class BottomNavigationMenu extends StatefulWidget {
@@ -68,7 +69,8 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-          backgroundColor: Colors.blue[400],
+          // backgroundColor: Colors.blue[400],
+          backgroundColor: kPrimaryColor,
           leading: new IconButton(
               icon: new Icon(Icons.account_circle, color: Colors.white),
               onPressed: () => _scaffoldKey.currentState.openDrawer())),
