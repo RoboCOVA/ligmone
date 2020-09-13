@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/constants.dart';
-import 'package:ligmone/loginScreen/loginPage.dart';
+import 'package:ligmone/screens/servicesList.dart';
 import 'package:ligmone/size_config.dart';
 import '../components/default_button.dart';
 import '../components/splash_content.dart';
@@ -67,10 +67,17 @@ class _BodyState extends State<Body> {
                     Spacer(flex: 3),
                     DefaultButton(
                       text: "Continue",
+                      // press: () {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => LoginPage()),
+                      //   );
+                      // },
                       press: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => ServiceList()),
                         );
                       },
                     ),

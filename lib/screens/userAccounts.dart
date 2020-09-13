@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/screens/dashboardPage.dart';
 import 'package:ligmone/screens/user_profile.dart';
 import 'package:ligmone/services/patform_alert_dialog.dart';
@@ -108,7 +109,17 @@ class _UserAccountsState extends State<UserAccounts> {
               SizedBox(
                 height: 10.0,
               ),
-              CustomListMenu(Icons.lock, 'Log Out', () => {_confirmSignOut()}),
+              CustomListMenu(
+                  Icons.lock,
+                  'Log Out',
+                  () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ),
+                        )
+                      }),
             ],
           ),
         ),
