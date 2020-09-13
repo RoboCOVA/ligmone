@@ -139,8 +139,8 @@ class ServiceList extends StatelessWidget {
                 color: Colors.blue[900],
                 size: 44,
               ),
-              title: Text('Condominum Loan'),
-              subtitle: Text('Own your Space'),
+              title: Text('Business Insurance'),
+              subtitle: Text('Your Business is your future'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 print('sheep');
@@ -152,8 +152,8 @@ class ServiceList extends StatelessWidget {
                 color: Colors.blue[900],
                 size: 44,
               ),
-              title: Text('Micro Loans'),
-              subtitle: Text('Money for what Matters'),
+              title: Text('Life Insurance'),
+              subtitle: Text('Protect you loved ones'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 print('goat');
