@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ligmone/screens/eligibleCriteria.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../constants.dart';
@@ -10,7 +11,7 @@ class ServiceList extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: kPrimaryColor,
+          backgroundColor: appbarcolor,
           title: Text('Eligibility Requirements'),
         ),
         body: ListView(
@@ -28,11 +29,17 @@ class ServiceList extends StatelessWidget {
                 color: Colors.blue[900],
                 size: 44,
               ),
-              title: Text('Emergency Staff Loan'),
+              title: Text('Emergency Staff Loans'),
               subtitle: Text('Being there for our staff'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('horse');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Emergency Staff Loan'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -41,11 +48,17 @@ class ServiceList extends StatelessWidget {
                 color: Colors.blue[900],
                 size: 44,
               ),
-              title: Text('Staff Morgage Loan'),
+              title: Text('Staff Morgage Loans'),
               subtitle: Text('Be home owner'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('cow');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Staff Morgage Loan'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -54,11 +67,17 @@ class ServiceList extends StatelessWidget {
                 color: Colors.blue[900],
                 size: 44,
               ),
-              title: Text('Automobile Loan'),
+              title: Text('Automobile Loas'),
               subtitle: Text('Live with Comfort'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('camel');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Automobile Loans'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -67,11 +86,17 @@ class ServiceList extends StatelessWidget {
                 color: Colors.blue[900],
                 size: 44,
               ),
-              title: Text('Condominum Loan'),
+              title: Text('Condominum Loans'),
               subtitle: Text('Own your Space'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('sheep');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Staff Condominum Loans'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -84,7 +109,13 @@ class ServiceList extends StatelessWidget {
               subtitle: Text('Money for what Matters'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('goat');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Micro Loans'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -97,7 +128,13 @@ class ServiceList extends StatelessWidget {
               subtitle: Text('Family Matters'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('goat');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Personal Loans'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -117,7 +154,13 @@ class ServiceList extends StatelessWidget {
               subtitle: Text('Be home owner'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('cow');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Morgage Insurance'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -130,7 +173,13 @@ class ServiceList extends StatelessWidget {
               subtitle: Text('Live with Comfort'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('camel');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Automobile Insurance'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -143,7 +192,13 @@ class ServiceList extends StatelessWidget {
               subtitle: Text('Your Business is your future'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('sheep');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Business Insurance'),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -156,7 +211,13 @@ class ServiceList extends StatelessWidget {
               subtitle: Text('Protect you loved ones'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
-                print('goat');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Life Insurance'),
+                  ),
+                );
               },
             ),
           ],
