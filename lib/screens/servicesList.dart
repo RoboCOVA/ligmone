@@ -138,6 +138,25 @@ class ServiceList extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(
+                Icons.group,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text('Shopping Loans'),
+              subtitle: Text('When you need it'),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Shopping  Loans'),
+                  ),
+                );
+              },
+            ),
+            ListTile(
               title: Text(
                 'Insurance',
                 textAlign: TextAlign.center,

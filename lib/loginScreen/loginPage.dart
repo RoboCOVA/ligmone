@@ -5,6 +5,7 @@ import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../constants.dart';
 import 'ForgotPassword.dart';
 //import 'package:trailblazer/src/shared/constDecoration.dart';
 
@@ -172,6 +173,27 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Widget _backButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
+              child: Icon(Icons.keyboard_arrow_left, color: Colors.black),
+            ),
+            Text('Back',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500))
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _submitButtonnew() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -288,6 +310,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    Color _lightGreen = Color.fromARGB(255, 226, 238, 218);
     final height = MediaQuery.of(context).size.height;
     var children2 = <Widget>[
       SizedBox(height: height * .2),
@@ -316,7 +339,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          //Positioned(top: 40, left: 0, child: _backButton()),
+          Positioned(top: 40, left: 0, child: _backButton()),
         ],
       ),
     ));
