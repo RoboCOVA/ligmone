@@ -151,7 +151,7 @@ class ServiceList extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        EligibleCriteria(title: 'Shopping  Loans'),
+                        EligibleCriteria(title: 'Shopping Loans'),
                   ),
                 );
               },
@@ -235,6 +235,32 @@ class ServiceList extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) =>
                         EligibleCriteria(title: 'Life Insurance'),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Merchant Services',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                FontAwesomeIcons.home,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text('Merchant Services'),
+              subtitle: Text('Pay on the Go'),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        EligibleCriteria(title: 'Merchant Services'),
                   ),
                 );
               },
