@@ -30,7 +30,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Emergency Staff Loans'),
-              subtitle: Text('Being there for our staff'),
+              // subtitle: Text('Being there for our staff'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -49,7 +49,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Staff Morgage Loans'),
-              subtitle: Text('Be home owner'),
+              //subtitle: Text('Be home owner'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -68,7 +68,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Automobile Loas'),
-              subtitle: Text('Live with Comfort'),
+              // subtitle: Text('Live with Comfort'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -87,7 +87,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Condominum Loans'),
-              subtitle: Text('Own your Space'),
+              //  subtitle: Text('Own your Space'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -106,7 +106,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Micro Loans'),
-              subtitle: Text('Money for what Matters'),
+              // subtitle: Text('Money for what Matters'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -125,7 +125,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Personal Loans'),
-              subtitle: Text('Family Matters'),
+              // subtitle: Text('Family Matters'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -144,7 +144,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Shopping Loans'),
-              subtitle: Text('When you need it'),
+              //  subtitle: Text('When you need it'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -170,7 +170,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Morgage Insurance'),
-              subtitle: Text('Be home owner'),
+              //  subtitle: Text('Be home owner'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -189,7 +189,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Automobile Insurance'),
-              subtitle: Text('Live with Comfort'),
+              //   subtitle: Text('Live with Comfort'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -208,7 +208,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Business Insurance'),
-              subtitle: Text('Your Business is your future'),
+              // subtitle: Text('Your Business is your future'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -227,7 +227,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Life Insurance'),
-              subtitle: Text('Protect you loved ones'),
+              //   subtitle: Text('Protect you loved ones'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(
@@ -253,7 +253,7 @@ class ServiceList extends StatelessWidget {
                 size: 44,
               ),
               title: Text('Merchant Services'),
-              subtitle: Text('Pay on the Go'),
+              //  subtitle: Text('Pay on the Go'),
               trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () {
                 Navigator.push(

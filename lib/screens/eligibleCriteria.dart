@@ -128,7 +128,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -137,7 +137,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -146,7 +146,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -155,7 +155,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -164,7 +164,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -173,7 +173,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -182,7 +182,7 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
@@ -236,66 +236,66 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[0]),
-              subtitle: Text('Being there for our staff'),
+              //subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[1]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[2]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[3]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[4]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[5]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffMorgageLoan[6]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
           ],
         ),
@@ -344,57 +344,57 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffCondominiumLoan[0]),
-              subtitle: Text('Being there for our staff'),
+              // subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffCondominiumLoan[1]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffCondominiumLoan[2]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffCondominiumLoan[3]),
-              subtitle: Text('Being there for our staff'),
+              //   subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffCondominiumLoan[4]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffCondominiumLoan[5]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
           ],
         ),
@@ -443,66 +443,66 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[0]),
-              subtitle: Text('Being there for our staff'),
+              //     subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[1]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[2]),
-              subtitle: Text('Being there for our staff'),
+              //   subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[3]),
-              subtitle: Text('Being there for our staff'),
+              //   subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[4]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[5]),
-              subtitle: Text('Being there for our staff'),
+              //     subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(staffAutomobileLoan[6]),
-              subtitle: Text('Being there for our staff'),
+              //     subtitle: Text('Being there for our staff'),
             ),
           ],
         ),
@@ -551,48 +551,48 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(microLoan[0]),
-              subtitle: Text('Being there for our staff'),
+              //   subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(microLoan[1]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(microLoan[2]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(microLoan[3]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(microLoan[4]),
-              subtitle: Text('Being there for our staff'),
+              //     subtitle: Text('Being there for our staff'),
             ),
           ],
         ),
@@ -641,48 +641,48 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(personalLoan[0]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(personalLoan[1]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(personalLoan[2]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(personalLoan[3]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(personalLoan[4]),
-              subtitle: Text('Being there for our staff'),
+              //     subtitle: Text('Being there for our staff'),
             ),
           ],
         ),
@@ -731,66 +731,66 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[0]),
-              subtitle: Text('Being there for our staff'),
+              //       subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[1]),
-              subtitle: Text('Being there for our staff'),
+              // subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[2]),
-              subtitle: Text('Being there for our staff'),
+              //    subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[3]),
-              subtitle: Text('Being there for our staff'),
+              //  subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[4]),
-              subtitle: Text('Being there for our staff'),
+              //   subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[5]),
-              subtitle: Text('Being there for our staff'),
+              //     subtitle: Text('Being there for our staff'),
             ),
             ListTile(
               leading: Icon(
-                Icons.person_outline,
+                Icons.list,
                 color: Colors.blue[900],
                 size: 44,
               ),
               title: Text(shoppingLoan[6]),
-              subtitle: Text('Being there for our staff'),
+              //   subtitle: Text('Being there for our staff'),
             ),
           ],
         ),
