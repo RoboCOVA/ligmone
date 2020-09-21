@@ -171,6 +171,16 @@ final List<Entry> data = <Entry>[
     Entry('Residential Building'),
     Entry('Home Improvement'),
   ]),
+  Entry('Insurance', <Entry>[
+    Entry('Business Insurance'),
+    Entry('Automobile Insurance'),
+    Entry('Morgage Insurance'),
+  ]),
+  Entry('Diaspora Account', <Entry>[
+    Entry('Diaspora Account'),
+    Entry('Diaspora Morgage Loan'),
+    Entry('Diaspora Investment'),
+  ]),
 ];
 
 // Create the Widget for the row

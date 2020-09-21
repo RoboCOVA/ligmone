@@ -4,6 +4,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../constants.dart';
+
 class LoanCharts extends StatefulWidget {
   LoanCharts(this.title);
 
@@ -254,6 +256,7 @@ class _LoanChartsState extends State<LoanCharts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: appbarcolor,
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ligmone/constants.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/screens/dashboardPage.dart';
 import 'package:ligmone/screens/user_profile.dart';
@@ -59,9 +60,10 @@ class _UserAccountsState extends State<UserAccounts> {
           child: ListView(
             children: <Widget>[
               DrawerHeader(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: <Color>[Colors.blue, Colors.blue[300]])),
+                  decoration: BoxDecoration(color: appbarcolor
+                      //gradient: LinearGradient(
+                      //  colors: <Color>[Colors.blue, Colors.blue[300]])
+                      ),
                   child: Container(
                     child: Column(
                       children: [

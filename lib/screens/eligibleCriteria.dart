@@ -72,6 +72,39 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
     "Based on creditworthiness, the limit gets decided by the bank",
     "Interest rate depends on the amount, duration and credit",
   ];
+  List<String> morgageInsurange = [
+    "All side of home picture is required",
+    "Lease land holding certificate shall be required",
+    "Yearly income shall be required",
+    "The value of home shall be evaluated",
+    "Fire and other natural damage shall be considered",
+  ];
+  List<String> automobileInsurange = [
+    "All side of automobile picture is required",
+    "The model and the manufacturer, year of the autombile shall be needed",
+    "What the automobile is used for shall be required- personal, commercial or enterprise",
+    "The value of the automobile will be evaluated",
+    "Hstory of the autombile shall be determined: new, used, and accident history",
+  ];
+  List<String> businessInsurange = [
+    "Business license form governement trade orgination shall be needed",
+    "The type of business is required",
+    "Finacial documents regarding the performance of the business will be needed",
+    "Number of employees, the benefit of employees and other information will required",
+  ];
+  List<String> merchantService = [
+    "Bank registration is required",
+    "The type of merchandise shall be required",
+    "The type business shall be required- hotel, restaurant, department store, cinema, Grocery store or etc",
+    "Number of employess, the benefit of employees and other information will required",
+  ];
+  List<String> diasporaService = [
+    "Required to have bank account",
+    "Income Tax copy shall be required",
+    "Copy of residence permit, Driving license, Passport copy shall be required",
+    "Proof of employment is required",
+    "Letter of application shall be required",
+  ];
 
   @override
   void initState() {
@@ -102,6 +135,21 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
         break;
       case 'Shopping Loans':
         temp = _buildBodyShoppingLoan();
+        break;
+      case 'Morgage Insurance':
+        temp = _buildMorgageInsurace();
+        break;
+      case 'Automobile Insurance':
+        temp = _buildAutomobileInsurace();
+        break;
+      case 'Business Insurance':
+        temp = _buildBusinessInsurace();
+        break;
+      case 'Merchant Services':
+        temp = _buildMerchantService();
+        break;
+      case 'Diaspora Account':
+        temp = _buildDiasporaAccount();
         break;
       default:
     }
@@ -790,6 +838,429 @@ class _EligibleCriteriaState extends State<EligibleCriteria> {
                 size: 44,
               ),
               title: Text(shoppingLoan[6]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+          ],
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            width: double.infinity,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                'Apply Now',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                ),
+              ),
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                ),
+              },
+              color: kPrimaryColor,
+              textColor: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMorgageInsurace() {
+    return Stack(
+      children: <Widget>[
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Loan Services',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(morgageInsurange[0]),
+              //     subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(morgageInsurange[1]),
+              //    subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(morgageInsurange[2]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(morgageInsurange[3]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(morgageInsurange[4]),
+              //  subtitle: Text('Being there for our staff'),
+            ),
+          ],
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            width: double.infinity,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                'Apply Now',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                ),
+              ),
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                ),
+              },
+              color: kPrimaryColor,
+              textColor: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAutomobileInsurace() {
+    return Stack(
+      children: <Widget>[
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Loan Services',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(automobileInsurange[0]),
+              //     subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(morgageInsurange[1]),
+              //    subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(automobileInsurange[2]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(automobileInsurange[3]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(automobileInsurange[4]),
+              //  subtitle: Text('Being there for our staff'),
+            ),
+          ],
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            width: double.infinity,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                'Apply Now',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                ),
+              ),
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                ),
+              },
+              color: kPrimaryColor,
+              textColor: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBusinessInsurace() {
+    return Stack(
+      children: <Widget>[
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Loan Services',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(businessInsurange[0]),
+              //     subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(businessInsurange[1]),
+              //    subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(businessInsurange[2]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(businessInsurange[3]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+          ],
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            width: double.infinity,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                'Apply Now',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                ),
+              ),
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                ),
+              },
+              color: kPrimaryColor,
+              textColor: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMerchantService() {
+    return Stack(
+      children: <Widget>[
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Loan Services',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[0]),
+              //     subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[1]),
+              //    subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[2]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[3]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+          ],
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            width: double.infinity,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                'Apply Now',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                ),
+              ),
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ),
+                ),
+              },
+              color: kPrimaryColor,
+              textColor: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDiasporaAccount() {
+    return Stack(
+      children: <Widget>[
+        ListView(
+          children: <Widget>[
+            ListTile(
+              title: Text(
+                'Loan Services',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 26),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[0]),
+              //     subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[1]),
+              //    subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[2]),
+              //   subtitle: Text('Being there for our staff'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.list,
+                color: Colors.blue[900],
+                size: 44,
+              ),
+              title: Text(merchantService[3]),
               //   subtitle: Text('Being there for our staff'),
             ),
           ],

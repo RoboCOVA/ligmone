@@ -44,9 +44,8 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 _menuItem('Shopping \nLoan', FontAwesomeIcons.dollarSign,
                     blueGradient),
-                _menuItem('Staff\nLoan', FontAwesomeIcons.cashRegister,
-                    darkRedGradient),
-                _menuItem(' Micro \n Loans', FontAwesomeIcons.envelopeOpen,
+                _menuItem('Staff\nLoan', Icons.work, darkRedGradient),
+                _menuItem(' Micro \n Loans', FontAwesomeIcons.solidMoneyBillAlt,
                     tealGradient),
               ],
             ),
@@ -55,12 +54,24 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                _menuItem('Invite new\nborrower', FontAwesomeIcons.coins,
+                _menuItem('Diaspora\n Account', FontAwesomeIcons.diaspora,
                     yellowGradient),
                 _menuItem(
                     'Insurance\nServices', FontAwesomeIcons.gift, redGradient),
-                _menuItem('Transfer\nYour Loan', FontAwesomeIcons.phoneAlt,
-                    purpleGradient),
+                _menuItem(
+                    'Transfer\nYour Loan', Icons.account_box, purpleGradient),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                _menuItem('Invite new \nborrower', FontAwesomeIcons.coins,
+                    yellowGradient),
+                _menuItem('Personal\nLoan', FontAwesomeIcons.personBooth,
+                    redGradient),
+                _menuItem('Merchant \nServices',
+                    FontAwesomeIcons.solidCreditCard, purpleGradient),
               ],
             ),
             SizedBox(height: 12),

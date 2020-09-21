@@ -52,7 +52,7 @@ class Dashboard extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => LoanCharts('Hello There'),
+                      builder: (context) => LoanCharts('Hello there'),
                     ),
                   );
                 },
