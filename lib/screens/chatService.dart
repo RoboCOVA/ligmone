@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 //NOTE: This page is Landlords/Tentants Data center - all the statistics
 
-class ChatService extends StatefulWidget {
+class OfferService extends StatefulWidget {
   //name({Key key}) : super(key: key);
 
   @override
-  _ChatServiceState createState() => _ChatServiceState();
+  _OfferServiceState createState() => _OfferServiceState();
 }
 
-class _ChatServiceState extends State<ChatService> {
+class _OfferServiceState extends State<OfferService> {
   @override
   Widget build(BuildContext context) {
     return Container(

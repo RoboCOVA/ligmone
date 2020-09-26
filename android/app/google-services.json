@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "464117991425-uamlcm17r0u75vtsqr551u5num1vnnkn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "loan.finance.ligmone",
+            "certificate_hash": "74cb66149a035ec9c6d0149ecfa2cbcb4906318f"
+          }
+        },
+        {
           "client_id": "464117991425-f12ril5ue1npjiclakf09sqi6n8vuum3.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -26,7 +26,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   final List<Widget> _children = [
     HomePage(),
     LoansPage(),
-    ChatService(),
+    OfferService(),
     UserAccounts(),
   ];
 
@@ -90,7 +90,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Image.asset(
-                            'assets/account.png',
+                            'assets/icon.png',
                             width: 80,
                             height: 80,
                           ),
@@ -99,7 +99,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Flutter',
+                          'Ligmone',
                           style: TextStyle(color: Colors.white, fontSize: 20.0),
                         ),
                       )
@@ -154,9 +154,9 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                 style: TextStyle(color: Colors.black),
               )),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.chat, color: Colors.deepOrange, size: 32),
+              icon: Icon(MdiIcons.offer, color: Colors.deepOrange, size: 32),
               title: Text(
-                'Chat',
+                'Offers',
                 style: TextStyle(color: Colors.black),
               )),
           BottomNavigationBarItem(
