@@ -1,4 +1,4 @@
-package com.example.ligmone
+package loan.finance.ligmone
 
 import io.flutter.embedding.android.FlutterActivity
 

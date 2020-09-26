@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:464117991425:android:086ec44c82e42413185800",
+        "mobilesdk_app_id": "1:464117991425:android:b94cac4c753e3b80185800",
         "android_client_info": {
-          "package_name": "com.example.ligmone"
+          "package_name": "loan.finance.ligmone"
         }
       },
       "oauth_client": [
