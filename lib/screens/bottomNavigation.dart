@@ -4,12 +4,15 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ligmone/homePage.dart';
+import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/screens/LoansPage.dart';
 import 'package:ligmone/screens/userAccounts.dart';
 
 import 'package:ligmone/screens/user_profile.dart';
+import 'package:ligmone/services/authService.dart';
 import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import 'chatService.dart';
@@ -26,25 +29,45 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   final List<Widget> _children = [
     HomePage(),
     LoansPage(),
-    OfferService(),
+    ChatService(),
     UserAccounts(),
   ];
 
   // Instantiate  firebase
   FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> _signOut() async {
+  // Future<void> _signOut() async {
+  //   try {
+  //     final googleSignIn = GoogleSignIn();
+  //     await googleSignIn.signOut();
+  //     final facebookLogin = FacebookLogin();
+  //     await facebookLogin.logOut();
+  //     await _auth.signOut();
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
+
+  // Future<void> _confirmSignOut() async {
+  //   final didRequestSignOut = await PlatformAlertDialog(
+  //     title: 'Logout',
+  //     content: 'Are you sure that you want to logout?',
+  //     cancelActionText: 'Cancel',
+  //     defaultActionText: 'Logout',
+  //   ).show(context);
+  //   if (didRequestSignOut == true) {
+  //     _signOut();
+  //   }
+  // }
+  Future<void> _signOut(BuildContext context) async {
     try {
-      final googleSignIn = GoogleSignIn();
-      await googleSignIn.signOut();
-      final facebookLogin = FacebookLogin();
-      await facebookLogin.logOut();
-      await _auth.signOut();
+      final auth = Provider.of<AuthService>(context, listen: false);
+      await auth.signOut();
     } catch (e) {
       print(e.toString());
     }
   }
 
-  Future<void> _confirmSignOut() async {
+  Future<void> _confirmSignOut(BuildContext context) async {
     final didRequestSignOut = await PlatformAlertDialog(
       title: 'Logout',
       content: 'Are you sure that you want to logout?',
@@ -52,17 +75,23 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
       defaultActionText: 'Logout',
     ).show(context);
     if (didRequestSignOut == true) {
-      _signOut();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginPage(),
+        ),
+      );
+      //_signOut(context);
     }
   }
 
-  void _openDrawer() {
-    _scaffoldKey.currentState.openDrawer();
-  }
+  // void _openDrawer() {
+  //   _scaffoldKey.currentState.openDrawer();
+  // }
 
-  void _closeDrawer() {
-    Navigator.of(context).pop();
-  }
+  // void _closeDrawer() {
+  //   Navigator.of(context).pop();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +156,20 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
             SizedBox(
               height: 10.0,
             ),
-            CustomListMenu(Icons.lock, 'Log Out', () => {_confirmSignOut()}),
+            FlatButton(
+              onPressed: () => _confirmSignOut(context),
+              // onPressed: () async {
+              //   AuthService _currentUser =
+              //       Provider.of<AuthService>(context, listen: false);
+              //   _currentUser.signOut();
+              // },
+              color: Colors.orange,
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                // Replace with a Row for horizontal icon + text
+                children: <Widget>[Icon(Icons.person), Text("Logout")],
+              ),
+            ),
           ],
         ),
       ),
@@ -154,9 +196,9 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                 style: TextStyle(color: Colors.black),
               )),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.offer, color: Colors.deepOrange, size: 32),
+              icon: Icon(MdiIcons.message, color: Colors.deepOrange, size: 32),
               title: Text(
-                'Offers',
+                'Chat',
                 style: TextStyle(color: Colors.black),
               )),
           BottomNavigationBarItem(
