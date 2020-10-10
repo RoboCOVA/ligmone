@@ -28,8 +28,8 @@ class _SignUpPageState extends State<EditProfile> {
     myFuture = getFuture();
   }
 
-  Future<FirebaseUser> getFuture() async {
-    return _auth.currentUser();
+  Future<User> getFuture() async {
+    return _auth.currentUser;
   }
 
   Widget _backButton() {
@@ -121,14 +121,14 @@ class _SignUpPageState extends State<EditProfile> {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
-                        final FirebaseUser user = await _auth.currentUser();
+                        User user = _auth.currentUser;
                         if (_birthdayController.text != '' &&
                             _mobilePhoneController.text != '') {
                           //  setState(() => loading = true);
-                          Firestore.instance
+                          FirebaseFirestore.instance
                               .collection('users')
-                              .document('${user.uid}')
-                              .setData({
+                              .doc('${user.uid}')
+                              .set({
                             "firstName": _firstNameController.text,
                             "lastName": _lastNameController.text,
                             "email": _emailController.text,
@@ -172,7 +172,7 @@ class _SignUpPageState extends State<EditProfile> {
       text: TextSpan(
           text: 'Li',
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.display1,
+            textStyle: Theme.of(context).textTheme.headline4,
             fontSize: 35,
             fontWeight: FontWeight.w700,
             color: Color(0xffe46b10),

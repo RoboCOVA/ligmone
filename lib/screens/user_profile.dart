@@ -16,7 +16,7 @@ class MapScreenState extends State<ProfilePagex>
     with SingleTickerProviderStateMixin {
   // Instantiate  firebase
   FirebaseAuth _auth = FirebaseAuth.instance;
-  final firestoreInstance = Firestore.instance;
+  final firestoreInstance = FirebaseFirestore.instance;
 
   String firstName = '';
   String lastName = '';
@@ -40,8 +40,8 @@ class MapScreenState extends State<ProfilePagex>
   //   return url;
   // }
 
-  Future<FirebaseUser> getFuture() async {
-    return _auth.currentUser();
+  Future<User> getFuture() async {
+    return _auth.currentUser;
   }
 
   bool _status = true;
@@ -60,10 +60,9 @@ class MapScreenState extends State<ProfilePagex>
         ),
         body: Container(
           color: Colors.white,
-          child: FutureBuilder<FirebaseUser>(
+          child: FutureBuilder<User>(
             future: myFuture,
-            builder:
-                (BuildContext context, AsyncSnapshot<FirebaseUser> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
               if (snapshot.connectionState == ConnectionState.done &&
                   snapshot.hasData) {
                 String userID = snapshot.data.uid;
@@ -399,13 +398,13 @@ class MapScreenState extends State<ProfilePagex>
   Future<DocumentSnapshot> getData(userID) async {
 // return await     Firestore.instance.collection('users').document(userID).get();
     DocumentSnapshot result =
-        await Firestore.instance.collection('users').document(userID).get();
+        await FirebaseFirestore.instance.collection('users').doc(userID).get();
 
-    firstName = result.data['firstName'] ?? firstName;
-    lastName = result.data['lastName'] ?? lastName;
-    email = result.data['email'] ?? email;
-    phoneNumber = result.data['phoneNumber'] ?? phoneNumber;
-    birthday = result.data['birthday'] ?? birthday;
+    firstName = result.data()['firstName'] ?? firstName;
+    lastName = result.data()['lastName'] ?? lastName;
+    email = result.data()['email'] ?? email;
+    phoneNumber = result.data()['phoneNumber'] ?? phoneNumber;
+    birthday = result.data()['birthday'] ?? birthday;
     return result;
   }
 

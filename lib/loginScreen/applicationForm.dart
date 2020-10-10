@@ -29,7 +29,7 @@ class MyData {
 }
 
 class MyAppScreenMode extends State<ApplicationForm> {
-  ScrollController _scrollController = new ScrollController();
+  // ScrollController _scrollController = new ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

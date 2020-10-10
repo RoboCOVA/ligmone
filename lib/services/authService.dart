@@ -19,7 +19,7 @@ class AuthService extends ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
 
 // create user obj based on firebase User
-  OurUser _userFromFirebaseUser(FirebaseUser user) {
+  OurUser _userFromFirebaseUser(User user) {
     return user != null ? OurUser(uid: user.uid) : null;
   }
 
@@ -33,7 +33,7 @@ class AuthService extends ChangeNotifier {
     String retVal = "error";
 
     try {
-      FirebaseUser _firebaseUser = await _auth.currentUser();
+      User _firebaseUser = _auth.currentUser;
       if (_firebaseUser != null) {
         _currentUser = await DatabaseService().getUserInfo(_firebaseUser.uid);
         if (_currentUser != null) {
@@ -67,7 +67,7 @@ class AuthService extends ChangeNotifier {
     String retVal = "error";
     OurUser _user = OurUser();
     try {
-      AuthResult _authResult = await _auth.createUserWithEmailAndPassword(
+      UserCredential _authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       _user.uid = _authResult.user.uid;
       _user.email = _authResult.user.email;
@@ -88,7 +88,7 @@ class AuthService extends ChangeNotifier {
   Future<String> loginUserWithEmail(String email, String password) async {
     String retVal = "error";
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
+      UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
 
       _currentUser = await DatabaseService().getUserInfo(result.user.uid);
@@ -104,15 +104,15 @@ class AuthService extends ChangeNotifier {
 
   Future<String> loginUserWithFacebook() async {
     String retVal = "error";
-    AuthResult userResult;
+    UserCredential userResult;
     OurUser _user = OurUser();
     try {
-      FacebookLogin facebookLogin = new FacebookLogin();
+      final facebookLogin = FacebookLogin();
       FacebookLoginResult result = await facebookLogin.logIn(['email']);
+      FacebookAccessToken facebookAccessToken = result.accessToken;
       if (result.status == FacebookLoginStatus.loggedIn) {
-        final AuthCredential credential = FacebookAuthProvider.getCredential(
-          accessToken: result.accessToken.token,
-        );
+        AuthCredential credential =
+            FacebookAuthProvider.credential(facebookAccessToken.token);
         userResult = (await _auth.signInWithCredential(credential));
 
         // final resultInfo = await facebookLogin.logInWithReadPermissions(['email']);
@@ -157,10 +157,10 @@ class AuthService extends ChangeNotifier {
     try {
       GoogleSignInAccount _googleUser = await _googleSignIn.signIn();
       GoogleSignInAuthentication _googleAuth = await _googleUser.authentication;
-      final AuthCredential _credential = GoogleAuthProvider.getCredential(
+      final AuthCredential _credential = GoogleAuthProvider.credential(
           idToken: _googleAuth.idToken, accessToken: _googleAuth.accessToken);
 
-      AuthResult result = await _auth.signInWithCredential(_credential);
+      UserCredential result = await _auth.signInWithCredential(_credential);
       if (result.additionalUserInfo.isNewUser) {
         _user.uid = result.user.uid;
         _user.email = result.user.email;

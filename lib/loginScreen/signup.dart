@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/services/authService.dart';
-import 'package:ligmone/utils/bezierContainer.dart';
 import 'package:provider/provider.dart';
 
 import 'loginPage.dart';
@@ -195,7 +194,7 @@ class _SignUpPageState extends State<SignUpPage> {
       text: TextSpan(
           text: 'Li',
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.display1,
+            textStyle: Theme.of(context).textTheme.headline4,
             fontSize: 35,
             fontWeight: FontWeight.w700,
             color: Color(0xffe46b10),

@@ -5,7 +5,6 @@ import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../constants.dart';
 import 'ForgotPassword.dart';
 //import 'package:trailblazer/src/shared/constDecoration.dart';
 
@@ -141,38 +140,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget serviceProviders() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 13),
-      alignment: Alignment.center,
-      child: RaisedButton(
-        color: Color(0xff008B8B),
-        onPressed: () {},
-        highlightElevation: 0,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // Image(image: AssetImage("assets/service.png"), height: 25.0),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  'Join Our Service Providers',
-                  style: TextStyle(
-                    fontFamily: 'GoogleSans',
-                    fontSize: 18,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _backButton() {
     return InkWell(
       onTap: () {
@@ -290,7 +257,7 @@ class _LoginPageState extends State<LoginPage> {
       text: TextSpan(
           text: 'Li',
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.display1,
+            textStyle: Theme.of(context).textTheme.headline4,
             fontSize: 30,
             fontWeight: FontWeight.w700,
             color: Color(0xffe46b10),
@@ -310,7 +277,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color _lightGreen = Color.fromARGB(255, 226, 238, 218);
+    //Color _lightGreen = Color.fromARGB(255, 226, 238, 218);
     final height = MediaQuery.of(context).size.height;
     var children2 = <Widget>[
       SizedBox(height: height * .2),

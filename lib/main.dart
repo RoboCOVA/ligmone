@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/root/root.dart';
 import 'package:ligmone/services/authService.dart';
@@ -5,7 +6,9 @@ import 'package:ligmone/utils/appTheme.dart';
 import 'package:provider/provider.dart';
 
 //Run|Debug;
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

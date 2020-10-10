@@ -1,18 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/screens/LoansPage.dart';
 import 'package:ligmone/screens/userAccounts.dart';
 
 import 'package:ligmone/screens/user_profile.dart';
-import 'package:ligmone/services/authService.dart';
 import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import 'chatService.dart';
@@ -34,7 +29,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   ];
 
   // Instantiate  firebase
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  // FirebaseAuth _auth = FirebaseAuth.instance;
   // Future<void> _signOut() async {
   //   try {
   //     final googleSignIn = GoogleSignIn();
@@ -58,14 +53,6 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   //     _signOut();
   //   }
   // }
-  Future<void> _signOut(BuildContext context) async {
-    try {
-      final auth = Provider.of<AuthService>(context, listen: false);
-      await auth.signOut();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
 
   Future<void> _confirmSignOut(BuildContext context) async {
     final didRequestSignOut = await PlatformAlertDialog(
