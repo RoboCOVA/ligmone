@@ -14,3 +14,12 @@ class OurUser {
       this.email,
       this.accountCreated});
 }
+
+class ChatClass {
+  String uid;
+  String nickname;
+  String photoUrl;
+  String aboutMe;
+
+  ChatClass({this.uid, this.nickname, this.photoUrl, this.aboutMe});
+}

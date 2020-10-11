@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ligmone/chat/homechat.dart';
 
 import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
@@ -8,51 +10,60 @@ import 'package:ligmone/screens/userAccounts.dart';
 import 'package:ligmone/screens/user_profile.dart';
 import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
-import 'chatService.dart';
 
 class BottomNavigationMenu extends StatefulWidget {
+  final String currentUserId;
+
+  BottomNavigationMenu({Key key, @required this.currentUserId})
+      : super(key: key);
+
   @override
-  _BottomNavigationMenuState createState() => _BottomNavigationMenuState();
+  _BottomNavigationMenuState createState() =>
+      _BottomNavigationMenuState(currentUserId: currentUserId);
 }
 
 class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
+  _BottomNavigationMenuState({Key key, @required this.currentUserId});
+
+  final String currentUserId;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _currentIndex = 0;
 
-  final List<Widget> _children = [
-    HomePage(),
-    LoansPage(),
-    ChatService(),
-    UserAccounts(),
-  ];
+  SharedPreferences prefs;
 
-  // Instantiate  firebase
-  // FirebaseAuth _auth = FirebaseAuth.instance;
-  // Future<void> _signOut() async {
-  //   try {
-  //     final googleSignIn = GoogleSignIn();
-  //     await googleSignIn.signOut();
-  //     final facebookLogin = FacebookLogin();
-  //     await facebookLogin.logOut();
-  //     await _auth.signOut();
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
+  bool isLoading = false;
+  bool isLoggedIn = true;
+  User currentUser;
 
-  // Future<void> _confirmSignOut() async {
-  //   final didRequestSignOut = await PlatformAlertDialog(
-  //     title: 'Logout',
-  //     content: 'Are you sure that you want to logout?',
-  //     cancelActionText: 'Cancel',
-  //     defaultActionText: 'Logout',
-  //   ).show(context);
-  //   if (didRequestSignOut == true) {
-  //     _signOut();
-  //   }
-  // }
+  @override
+  void initState() {
+    super.initState();
+    isSignedIn();
+  }
+
+  void isSignedIn() async {
+    this.setState(() {
+      isLoading = true;
+    });
+
+    prefs = await SharedPreferences.getInstance();
+
+    // if (isLoggedIn) {
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) =>
+    //             HomeChat(currentUserId: prefs.getString('id'))),
+    //   );
+    // }
+
+    this.setState(() {
+      isLoading = false;
+    });
+  }
 
   Future<void> _confirmSignOut(BuildContext context) async {
     final didRequestSignOut = await PlatformAlertDialog(
@@ -72,16 +83,15 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
     }
   }
 
-  // void _openDrawer() {
-  //   _scaffoldKey.currentState.openDrawer();
-  // }
-
-  // void _closeDrawer() {
-  //   Navigator.of(context).pop();
-  // }
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _children = [
+      HomePage(),
+      LoansPage(),
+      // ChatService(widget.currentUserId),
+      ChatScreen(currentUserId: prefs.getString('id')),
+      UserAccounts(),
+    ];
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -145,11 +155,6 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
             ),
             FlatButton(
               onPressed: () => _confirmSignOut(context),
-              // onPressed: () async {
-              //   AuthService _currentUser =
-              //       Provider.of<AuthService>(context, listen: false);
-              //   _currentUser.signOut();
-              // },
               color: Colors.orange,
               padding: EdgeInsets.all(10.0),
               child: Column(

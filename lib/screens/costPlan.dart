@@ -14,27 +14,27 @@ class _CostPlanState extends State<CostPlan> {
     return Scaffold(
       backgroundColor: Color(0XFFFEFEFE),
       appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(
-              FontAwesomeIcons.arrowLeft,
-              color: Colors.white,
-            ),
-            onPressed: () => {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BottomNavigationMenu(),
-                    ),
-                    (route) => false,
-                  ),
-                }),
+        // leading: IconButton(
+        //     icon: Icon(
+        //       FontAwesomeIcons.arrowLeft,
+        //       color: Colors.white,
+        //     ),
+        //     onPressed: () => {
+        //           Navigator.pushAndRemoveUntil(
+        //             context,
+        //             MaterialPageRoute(
+        //               builder: (context) => BottomNavigationMenu(),
+        //             ),
+        //             (route) => false,
+        //           ),
+        //         }),
         title: Text("Plans"),
         actions: <Widget>[
           // IconButton(icon: Icon(FontAwesomeIcons.coins), onPressed: () {}),
           IconButton(
               icon: Icon(FontAwesomeIcons.ellipsisV),
               onPressed: () {
-                //
+                Navigator.of(context);
               }),
         ],
       ),

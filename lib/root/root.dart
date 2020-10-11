@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/models/user.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
@@ -39,13 +40,13 @@ class _OurRootState extends State<OurRoot> {
   @override
   Widget build(BuildContext context) {
     Widget retVal;
-
+    OurUser _user = OurUser();
     switch (_authStatus) {
       case AuthStatus.notLoggin:
         retVal = SplashScreen();
         break;
       case AuthStatus.loggedIn:
-        retVal = BottomNavigationMenu();
+        retVal = BottomNavigationMenu(currentUserId: _user.uid);
         break;
       default:
     }

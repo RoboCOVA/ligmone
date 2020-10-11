@@ -1,13 +1,16 @@
 // ignore: unused_import
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:ligmone/models/user.dart';
 import 'package:ligmone/services/databaseService.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService extends ChangeNotifier {
   OurUser _currentUser = OurUser();
@@ -66,6 +69,7 @@ class AuthService extends ChangeNotifier {
       String email, String password, String firstName, String lastName) async {
     String retVal = "error";
     OurUser _user = OurUser();
+
     try {
       UserCredential _authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -195,5 +199,63 @@ class AuthService extends ChangeNotifier {
       return "Email can't be empty";
     }
     return null;
+  }
+
+// Chat Service Google Sign
+
+  Future<String> handleSignIn() async {
+    String retVal = "error";
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    User currentUser;
+
+    GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    User firebaseUser =
+        (await firebaseAuth.signInWithCredential(credential)).user;
+
+    if (firebaseUser != null) {
+      // Check is already sign up
+      final QuerySnapshot result = await FirebaseFirestore.instance
+          .collection('users')
+          .where('uid', isEqualTo: firebaseUser.uid)
+          .get();
+      final List<DocumentSnapshot> documents = result.docs;
+      if (documents.length == 0) {
+        // Update data to server if new user
+        FirebaseFirestore.instance
+            .collection('users1')
+            .doc(firebaseUser.uid)
+            .set({
+          'nickname': firebaseUser.displayName,
+          'photoUrl': firebaseUser.photoURL,
+          'uid': firebaseUser.uid,
+          'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+          'chattingWith': null
+        });
+
+        // Write data to local
+        currentUser = firebaseUser;
+        await prefs.setString('uid', currentUser.uid);
+        await prefs.setString('nickname', currentUser.displayName);
+        await prefs.setString('photoUrl', currentUser.photoURL);
+      } else {
+        // Write data to local
+        await prefs.setString('uid', documents[0].data()['uid']);
+        await prefs.setString('nickname', documents[0].data()['nickname']);
+        await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
+        await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+        retVal = "Success";
+      }
+      Fluttertoast.showToast(msg: "Sign in success");
+    }
+    return retVal;
   }
 }
