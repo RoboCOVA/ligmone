@@ -33,6 +33,9 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   int _currentIndex = 0;
 
   SharedPreferences prefs;
+  TextEditingController controllerNickname;
+
+  String nickname = '';
 
   bool isLoading = false;
   bool isLoggedIn = true;

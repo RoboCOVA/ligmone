@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ligmone/loginScreen/signup.dart';
-import 'package:ligmone/models/user.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgotPassword.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 enum LoginType {
   email,
@@ -119,9 +121,11 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       child: RaisedButton(
         color: Color(0XFF3b5998),
-        onPressed: () {
-          _loginUser(type: LoginType.facebook, context: context);
-        },
+        onPressed: handleSignInFB,
+        //onPressed: () {
+        // _loginUser(type: LoginType.facebook, context: context);
+
+        //  },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
         highlightElevation: 0,
         child: Padding(
@@ -208,72 +212,219 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Future<Null> handleSignInEmail(
+      String email, String password, String firstName, String lastName) async {
+    prefs = await SharedPreferences.getInstance();
+    UserCredential userResult;
+    this.setState(() {
+      isLoading = true;
+    });
+    try {
+      UserCredential credential = await firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      User firebaseUser = firebaseAuth.currentUser;
+      if (firebaseUser != null) {
+        // Check is already sign up
+        final QuerySnapshot result = await FirebaseFirestore.instance
+            .collection('users1')
+            .where('id', isEqualTo: firebaseUser.uid)
+            .get();
+        final List<DocumentSnapshot> documents = result.docs;
+        if (documents.length == 0) {
+          // Update data to server if new user
+          FirebaseFirestore.instance
+              .collection('users1')
+              .doc(firebaseUser.uid)
+              .set({
+            'nickname': firebaseUser.displayName,
+            'photoUrl': firebaseUser.photoURL,
+            'id': firebaseUser.uid,
+            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+            'chattingWith': null
+          });
+
+          // Write data to local
+          currentUser = firebaseUser;
+          await prefs.setString('id', currentUser.uid);
+          await prefs.setString('nickname', currentUser.displayName);
+          await prefs.setString('photoUrl', currentUser.photoURL);
+        } else {
+          // Write data to local
+          await prefs.setString('id', documents[0].data()['id']);
+          await prefs.setString('nickname', documents[0].data()['nickname']);
+          await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
+          await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+        }
+        Fluttertoast.showToast(msg: "Sign in success");
+        this.setState(() {
+          isLoading = false;
+        });
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  BottomNavigationMenu(currentUserId: firebaseUser.uid),
+            ));
+      } else {
+        Fluttertoast.showToast(msg: "Sign in fail");
+        this.setState(() {
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<Null> handleSignInFB() async {
+    prefs = await SharedPreferences.getInstance();
+    UserCredential userResult;
+    this.setState(() {
+      isLoading = true;
+    });
+    try {
+      final facebookLogin = FacebookLogin();
+      FacebookLoginResult result = await facebookLogin.logIn(['email']);
+      FacebookAccessToken facebookAccessToken = result.accessToken;
+      if (result.status == FacebookLoginStatus.loggedIn) {
+        AuthCredential credential =
+            FacebookAuthProvider.credential(facebookAccessToken.token);
+        userResult = (await firebaseAuth.signInWithCredential(credential));
+
+        // final resultInfo = await facebookLogin.logInWithReadPermissions(['email']);
+        final token = result.accessToken.token;
+        final graphResponse = await http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=$token');
+        //final profile = json.decode(graphResponse.body);
+        Map<String, dynamic> profile = json.decode(graphResponse.body);
+
+        User firebaseUser =
+            (await firebaseAuth.signInWithCredential(credential)).user;
+        if (firebaseUser != null) {
+          // Check is already sign up
+          final QuerySnapshot result = await FirebaseFirestore.instance
+              .collection('users1')
+              .where('id', isEqualTo: firebaseUser.uid)
+              .get();
+          final List<DocumentSnapshot> documents = result.docs;
+          if (documents.length == 0) {
+            // Update data to server if new user
+            FirebaseFirestore.instance
+                .collection('users1')
+                .doc(firebaseUser.uid)
+                .set({
+              'nickname': firebaseUser.displayName,
+              'photoUrl': firebaseUser.photoURL,
+              'id': firebaseUser.uid,
+              'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+              'chattingWith': null
+            });
+
+            // Write data to local
+            currentUser = firebaseUser;
+            await prefs.setString('id', currentUser.uid);
+            await prefs.setString('nickname', currentUser.displayName);
+            await prefs.setString('photoUrl', currentUser.photoURL);
+          } else {
+            // Write data to local
+            await prefs.setString('id', documents[0].data()['id']);
+            await prefs.setString('nickname', documents[0].data()['nickname']);
+            await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
+            await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+          }
+          Fluttertoast.showToast(msg: "Sign in success");
+          this.setState(() {
+            isLoading = false;
+          });
+
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    BottomNavigationMenu(currentUserId: firebaseUser.uid),
+              ));
+        } else {
+          Fluttertoast.showToast(msg: "Sign in fail");
+          this.setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<Null> handleSignIn() async {
     prefs = await SharedPreferences.getInstance();
 
     this.setState(() {
       isLoading = true;
     });
+    try {
+      GoogleSignInAccount googleUser = await googleSignIn.signIn();
+      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-    GoogleSignInAccount googleUser = await googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+      User firebaseUser =
+          (await firebaseAuth.signInWithCredential(credential)).user;
 
-    User firebaseUser =
-        (await firebaseAuth.signInWithCredential(credential)).user;
-
-    if (firebaseUser != null) {
-      // Check is already sign up
-      final QuerySnapshot result = await FirebaseFirestore.instance
-          .collection('users1')
-          .where('id', isEqualTo: firebaseUser.uid)
-          .get();
-      final List<DocumentSnapshot> documents = result.docs;
-      if (documents.length == 0) {
-        // Update data to server if new user
-        FirebaseFirestore.instance
+      if (firebaseUser != null) {
+        // Check is already sign up
+        final QuerySnapshot result = await FirebaseFirestore.instance
             .collection('users1')
-            .doc(firebaseUser.uid)
-            .set({
-          'nickname': firebaseUser.displayName,
-          'photoUrl': firebaseUser.photoURL,
-          'id': firebaseUser.uid,
-          'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
-          'chattingWith': null
+            .where('id', isEqualTo: firebaseUser.uid)
+            .get();
+        final List<DocumentSnapshot> documents = result.docs;
+        if (documents.length == 0) {
+          // Update data to server if new user
+          FirebaseFirestore.instance
+              .collection('users1')
+              .doc(firebaseUser.uid)
+              .set({
+            'nickname': firebaseUser.displayName,
+            'photoUrl': firebaseUser.photoURL,
+            'id': firebaseUser.uid,
+            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+            'chattingWith': null
+          });
+
+          // Write data to local
+          currentUser = firebaseUser;
+          await prefs.setString('id', currentUser.uid);
+          await prefs.setString('nickname', currentUser.displayName);
+          await prefs.setString('photoUrl', currentUser.photoURL);
+        } else {
+          // Write data to local
+          await prefs.setString('id', documents[0].data()['id']);
+          await prefs.setString('nickname', documents[0].data()['nickname']);
+          await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
+          await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+        }
+        Fluttertoast.showToast(msg: "Sign in success");
+        this.setState(() {
+          isLoading = false;
         });
 
-        // Write data to local
-        currentUser = firebaseUser;
-        await prefs.setString('id', currentUser.uid);
-        await prefs.setString('nickname', currentUser.displayName);
-        await prefs.setString('photoUrl', currentUser.photoURL);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  BottomNavigationMenu(currentUserId: firebaseUser.uid),
+            ));
       } else {
-        // Write data to local
-        await prefs.setString('id', documents[0].data()['id']);
-        await prefs.setString('nickname', documents[0].data()['nickname']);
-        await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
-        await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+        Fluttertoast.showToast(msg: "Sign in fail");
+        this.setState(() {
+          isLoading = false;
+        });
       }
-      Fluttertoast.showToast(msg: "Sign in success");
-      this.setState(() {
-        isLoading = false;
-      });
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                BottomNavigationMenu(currentUserId: firebaseUser.uid),
-          ));
-    } else {
-      Fluttertoast.showToast(msg: "Sign in fail");
-      this.setState(() {
-        isLoading = false;
-      });
+    } catch (e) {
+      print(e);
     }
   }
 

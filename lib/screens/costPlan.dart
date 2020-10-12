@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ligmone/homePage.dart';
 import 'package:ligmone/loginScreen/applicationForm.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CostPlan extends StatefulWidget {
   @override
@@ -9,25 +11,46 @@ class CostPlan extends StatefulWidget {
 }
 
 class _CostPlanState extends State<CostPlan> {
+  SharedPreferences prefs;
+
+  String id = '';
+
+  bool isLoading = false;
+
+  final FocusNode focusNodeNickname = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    readLocal();
+  }
+
+  void readLocal() async {
+    prefs = await SharedPreferences.getInstance();
+    id = prefs.getString('id') ?? '';
+
+    // Force refresh input
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0XFFFEFEFE),
       appBar: AppBar(
-        // leading: IconButton(
-        //     icon: Icon(
-        //       FontAwesomeIcons.arrowLeft,
-        //       color: Colors.white,
-        //     ),
-        //     onPressed: () => {
-        //           Navigator.pushAndRemoveUntil(
-        //             context,
-        //             MaterialPageRoute(
-        //               builder: (context) => BottomNavigationMenu(),
-        //             ),
-        //             (route) => false,
-        //           ),
-        //         }),
+        leading: IconButton(
+            icon: Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: Colors.white,
+            ),
+            onPressed: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            BottomNavigationMenu(currentUserId: id),
+                      )),
+                }),
         title: Text("Plans"),
         actions: <Widget>[
           // IconButton(icon: Icon(FontAwesomeIcons.coins), onPressed: () {}),

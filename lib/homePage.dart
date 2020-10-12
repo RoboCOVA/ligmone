@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ligmone/screens/costPlan.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/style.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   final String title = 'Welcome to Ligmone';
@@ -13,6 +14,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController controllerNickname;
+
+  SharedPreferences prefs;
+
+  String id = '';
+  String nickname = '';
+  String aboutMe = '';
+  String photoUrl = '';
+
+  bool isLoading = false;
+
+  final FocusNode focusNodeNickname = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    readLocal();
+  }
+
+  void readLocal() async {
+    prefs = await SharedPreferences.getInstance();
+    nickname = prefs.getString('nickname') ?? '';
+
+    controllerNickname = TextEditingController(text: nickname);
+
+    // Force refresh input
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -306,7 +336,7 @@ class _HomePageState extends State<HomePage> {
         ),
         SizedBox(height: 4),
         Text(
-          'Tesfaye',
+          nickname,
           style: TextStyle(
             color: Colors.grey[600],
             fontSize: 16,
