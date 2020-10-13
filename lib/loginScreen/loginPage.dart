@@ -36,6 +36,8 @@ class _LoginPageState extends State<LoginPage> {
   bool isLoggedIn = false;
   User currentUser;
 
+  String email = '';
+  String password = '';
   @override
   void initState() {
     super.initState();
@@ -212,10 +214,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<Null> handleSignInEmail(
-      String email, String password, String firstName, String lastName) async {
+  Future<Null> handleSignInEmail() async {
     prefs = await SharedPreferences.getInstance();
-    UserCredential userResult;
+    email = _emailController.text;
+    password = _passwordController.text;
     this.setState(() {
       isLoading = true;
     });
@@ -485,19 +487,21 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20),
             Builder(
               builder: (context) => RaisedButton(
-                  color: Colors.orange[400],
-                  child: Text(
-                    'Login',
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                  onPressed: () {
-                    _loginUser(
-                        type: LoginType.email,
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                        context: context);
-                  }),
+                color: Colors.orange[400],
+                child: Text(
+                  'Login',
+                  style: TextStyle(color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
+                onPressed: handleSignInEmail,
+                // onPressed: () {
+                //   _loginUser(
+                //       type: LoginType.email,
+                //       email: _emailController.text,
+                //       password: _passwordController.text,
+                //       context: context);
+                // },
+              ),
             ),
             FlatButton(
               child: Text("Dont have an account? Sign up here"),

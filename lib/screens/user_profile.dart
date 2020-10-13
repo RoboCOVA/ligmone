@@ -67,7 +67,7 @@ class MapScreenState extends State<ProfilePagex>
                   snapshot.hasData) {
                 String userID = snapshot.data.uid;
                 var ref =
-                    FirebaseStorage.instance.ref().child('users/$userID.png');
+                    FirebaseStorage.instance.ref().child('users1/$userID.png');
                 ref
                     .getDownloadURL()
                     .then((loc) => setState(() => _imageUrl = loc));
@@ -400,8 +400,8 @@ class MapScreenState extends State<ProfilePagex>
     DocumentSnapshot result =
         await FirebaseFirestore.instance.collection('users').doc(userID).get();
 
-    firstName = result.data()['firstName'] ?? firstName;
-    lastName = result.data()['lastName'] ?? lastName;
+    firstName = result.data()['nickname'] ?? firstName;
+    lastName = result.data()['nickname'] ?? lastName;
     email = result.data()['email'] ?? email;
     phoneNumber = result.data()['phoneNumber'] ?? phoneNumber;
     birthday = result.data()['birthday'] ?? birthday;

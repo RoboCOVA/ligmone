@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'loginPage.dart';
 
@@ -17,23 +22,91 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences prefs;
+
+  bool isLoading = false;
+  bool isLoggedIn = false;
+  User currentUser;
   bool loading = false;
   // text field state
   void _signUpUser(String email, String password, BuildContext context,
       String firstName, String lastName) async {
-    AuthService _curretUser = Provider.of<AuthService>(context, listen: false);
+    // bool newUser = true;
+    // AuthService _curretUser = Provider.of<AuthService>(context, listen: false);
+    // try {
+    //   String _returnString =
+    //       await _curretUser.signUpUser(email, password, firstName, lastName);
+    //   if (_returnString == "success") {
+    //     Navigator.of(context).pop();
+    //   } else {
+    //     Scaffold.of(context).showSnackBar(
+    //       SnackBar(
+    //         content: Text(_returnString),
+    //         duration: Duration(seconds: 10),
+    //       ),
+    //     );
+    //   }
+    // } catch (e) {
+    //   print(e);
+    // }
+    prefs = await SharedPreferences.getInstance();
+
+    this.setState(() {
+      isLoading = true;
+    });
     try {
-      String _returnString =
-          await _curretUser.signUpUser(email, password, firstName, lastName);
-      if (_returnString == "success") {
-        Navigator.of(context).pop();
+      UserCredential credential = await firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      User firebaseUser = firebaseAuth.currentUser;
+      if (firebaseUser != null) {
+        // Check is already sign up
+        final QuerySnapshot result = await FirebaseFirestore.instance
+            .collection('users1')
+            .where('id', isEqualTo: firebaseUser.uid)
+            .get();
+        final List<DocumentSnapshot> documents = result.docs;
+        if (documents.length == 0) {
+          // Update data to server if new user
+          FirebaseFirestore.instance
+              .collection('users1')
+              .doc(firebaseUser.uid)
+              .set({
+            'nickname': firstName + ' ' + lastName,
+            'photoUrl': firebaseUser.photoURL,
+            'id': firebaseUser.uid,
+            'createdAt': DateTime.now().millisecondsSinceEpoch.toString(),
+            'chattingWith': null
+          });
+
+          // Write data to local
+          currentUser = firebaseUser;
+          await prefs.setString('id', currentUser.uid);
+          await prefs.setString('nickname', firstName + ' ' + lastName);
+          await prefs.setString('photoUrl', currentUser.photoURL);
+        } else {
+          // Write data to local
+          await prefs.setString('id', documents[0].data()['id']);
+          await prefs.setString('nickname', documents[0].data()['nickname']);
+          await prefs.setString('photoUrl', documents[0].data()['photoUrl']);
+          await prefs.setString('aboutMe', documents[0].data()['aboutMe']);
+        }
+        Fluttertoast.showToast(msg: "Sign in success");
+        this.setState(() {
+          isLoading = false;
+        });
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  BottomNavigationMenu(currentUserId: firebaseUser.uid),
+            ));
       } else {
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text(_returnString),
-            duration: Duration(seconds: 10),
-          ),
-        );
+        Fluttertoast.showToast(msg: "Sign in fail");
+        this.setState(() {
+          isLoading = false;
+        });
       }
     } catch (e) {
       print(e);
@@ -130,8 +203,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   onPressed: () async {
                     if (_passwordController.text ==
                         _confirmPasswordController.text) {
-                      //  setState(() => loading = true);
-
                       _signUpUser(
                           _emailController.text,
                           _passwordController.text,
