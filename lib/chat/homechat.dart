@@ -97,9 +97,7 @@ class ChatScreenState extends State<ChatScreen> {
 
   void showNotification(message) async {
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
-      Platform.isAndroid
-          ? 'loan.finance.ligmone.chat'
-          : 'loan.finance.ligmone.chat',
+      Platform.isAndroid ? 'loan.finance.ligmone' : 'loan.finance.ligmone',
       'Flutter chat demo',
       'your channel description',
       playSound: true,
@@ -352,7 +350,7 @@ class ChatScreenState extends State<ChatScreen> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          'Nickname: ${document.data()['nickname']}',
+                          '${document.data()['nickname']}',
                           style: TextStyle(color: primaryColor),
                         ),
                         alignment: Alignment.centerLeft,
@@ -365,7 +363,7 @@ class ChatScreenState extends State<ChatScreen> {
                         ),
                         alignment: Alignment.centerLeft,
                         margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-                      )
+                      ),
                     ],
                   ),
                   margin: EdgeInsets.only(left: 20.0),
