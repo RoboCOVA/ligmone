@@ -29,7 +29,6 @@ class MyData {
 }
 
 class MyAppScreenMode extends State<ApplicationForm> {
-  // ScrollController _scrollController = new ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +72,7 @@ class _StepperBodyState extends State<StepperBody> {
   @override
   void initState() {
     super.initState();
+
     _focusNode.addListener(() {
       setState(() {});
       print('Has focus: $_focusNode.hasFocus');

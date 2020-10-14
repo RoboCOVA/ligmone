@@ -104,37 +104,37 @@ class _HomePageState extends State<HomePage> {
                     FontAwesomeIcons.solidCreditCard, purpleGradient),
               ],
             ),
-            SizedBox(height: 12),
-            _title('Special Pomotion'),
-            SizedBox(height: 12),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _promotionCard(
-                    'Loans...\n Refer Ligmone Loans. Make Money. Earn 300ETB\n When firends get a ligmone Personal Loan or Shopping Loan.\n They will get 300 ETB too!',
-                    'assets/profit.png'),
-                SizedBox(
-                  height: 10,
-                ),
-                _promotionCard(
-                    'Member Benefits...\nGet support for tackling money problems\n with your partner. There are alot of way to achieve your goals and needs\nGet help from our Financiers\n Make an an Appointment!',
-                    'assets/cash-back.png'),
-                SizedBox(
-                  height: 10,
-                ),
-                _promotionCard(
-                    'Member Experience...\nNo Stress with Ligmone \n Over 2,000 memebers registered for Webinar and virtual advice \n attend member event from anywhere!',
-                    'assets/experience.png'),
-                SizedBox(
-                  height: 10,
-                ),
-                _promotionCard(
-                    'Ligmone Blog...\nSaturday Shoppings, Tips and News!\nLearn more about Money and Finance, lEARN to Control!',
-                    'assets/financecontrol.jpg'),
-              ],
-            ),
-            SizedBox(height: 48),
+            // SizedBox(height: 12),
+            // _title('Special Pomotion'),
+            // SizedBox(height: 12),
+            // Column(
+            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: <Widget>[
+            //     _promotionCard(
+            //         'Loans...\n Refer Ligmone Loans. Make Money. Earn 300ETB\n When firends get a ligmone Personal Loan or Shopping Loan.\n They will get 300 ETB too!',
+            //         'assets/profit.png'),
+            //     SizedBox(
+            //       height: 10,
+            //     ),
+            //     _promotionCard(
+            //         'Member Benefits...\nGet support for tackling money problems\n with your partner. There are alot of way to achieve your goals and needs\nGet help from our Financiers\n Make an an Appointment!',
+            //         'assets/cash-back.png'),
+            //     SizedBox(
+            //       height: 10,
+            //     ),
+            //     _promotionCard(
+            //         'Member Experience...\nNo Stress with Ligmone \n Over 2,000 memebers registered for Webinar and virtual advice \n attend member event from anywhere!',
+            //         'assets/experience.png'),
+            //     SizedBox(
+            //       height: 10,
+            //     ),
+            //     _promotionCard(
+            //         'Ligmone Blog...\nSaturday Shoppings, Tips and News!\nLearn more about Money and Finance, lEARN to Control!',
+            //         'assets/financecontrol.jpg'),
+            //   ],
+            // ),
+            // SizedBox(height: 48),
           ],
         ),
       ),

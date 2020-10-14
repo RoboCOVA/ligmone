@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ligmone/homePage.dart';
-import 'package:ligmone/loginScreen/applicationForm.dart';
+import 'package:ligmone/loginScreen/applyforloan.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -245,7 +244,7 @@ class _CostPlanState extends State<CostPlan> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => ApplicationForm(),
+                                      builder: (context) => ApplyLoan(),
                                     ),
                                     (route) => false,
                                   );
@@ -471,7 +470,7 @@ class _CostPlanState extends State<CostPlan> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => ApplicationForm(),
+                                      builder: (context) => ApplyLoan(),
                                     ),
                                     (route) => false,
                                   );
@@ -722,7 +721,7 @@ class _CostPlanState extends State<CostPlan> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => ApplicationForm(),
+                                      builder: (context) => ApplyLoan(),
                                     ),
                                     (route) => false,
                                   );
