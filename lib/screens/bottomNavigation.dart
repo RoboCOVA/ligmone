@@ -98,7 +98,13 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-          // backgroundColor: Colors.blue[400],
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[Colors.blue, kPrimaryColor])),
+          ),
           backgroundColor: kPrimaryColor,
           leading: new IconButton(
               icon: new Icon(Icons.account_circle, color: Colors.white),

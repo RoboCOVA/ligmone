@@ -126,11 +126,12 @@ class _SignUpPageState extends State<EditProfile> {
                             _mobilePhoneController.text != '') {
                           //  setState(() => loading = true);
                           FirebaseFirestore.instance
-                              .collection('users')
+                              .collection('users1')
                               .doc('${user.uid}')
                               .set({
-                            "firstName": _firstNameController.text,
-                            "lastName": _lastNameController.text,
+                            "nickname": _firstNameController.text +
+                                ' ' +
+                                _lastNameController.text,
                             "email": _emailController.text,
                             "phoneNumber": _mobilePhoneController.text,
                             "birthday": _birthdayController.text

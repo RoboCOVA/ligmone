@@ -18,8 +18,8 @@ class MapScreenState extends State<ProfilePagex>
   FirebaseAuth _auth = FirebaseAuth.instance;
   final firestoreInstance = FirebaseFirestore.instance;
 
-  String firstName = '';
-  String lastName = '';
+  String name = '';
+  // String lastName = '';
   String email = '';
   String phoneNumber = '';
   String birthday = '';
@@ -211,7 +211,7 @@ class MapScreenState extends State<ProfilePagex>
                                           mainAxisSize: MainAxisSize.min,
                                           children: <Widget>[
                                             new Text(
-                                              'First Name',
+                                              ' Name',
                                               style: TextStyle(
                                                   fontSize: 16.0,
                                                   fontWeight: FontWeight.bold),
@@ -230,50 +230,50 @@ class MapScreenState extends State<ProfilePagex>
                                           child: new Text(
                                             //decoration: const InputDecoration(
                                             //  hintText: "Enter Your Name",
-                                            '$firstName',
+                                            '$name',
                                           ),
                                           // enabled: !_status,
                                           //  autofocus: !_status,
                                         ),
                                       ],
                                     )),
-                                Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 25.0, right: 25.0, top: 25.0),
-                                    child: new Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: <Widget>[
-                                        new Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            new Text(
-                                              'Last Name',
-                                              style: TextStyle(
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    )),
-                                Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 25.0, right: 25.0, top: 2.0),
-                                    child: new Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: <Widget>[
-                                        new Flexible(
-                                          child: new Text(
-                                            // decoration: const InputDecoration(
-                                            //   hintText: "Enter Email ID"),
-                                            //   enabled: !_status,
-                                            '$lastName',
-                                          ),
-                                        ),
-                                      ],
-                                    )),
+                                // Padding(
+                                //     padding: EdgeInsets.only(
+                                //         left: 25.0, right: 25.0, top: 25.0),
+                                //     child: new Row(
+                                //       mainAxisSize: MainAxisSize.max,
+                                //       children: <Widget>[
+                                //         new Column(
+                                //           mainAxisAlignment:
+                                //               MainAxisAlignment.start,
+                                //           mainAxisSize: MainAxisSize.min,
+                                //           children: <Widget>[
+                                //             new Text(
+                                //               'Last Name',
+                                //               style: TextStyle(
+                                //                   fontSize: 16.0,
+                                //                   fontWeight: FontWeight.bold),
+                                //             ),
+                                //           ],
+                                //         ),
+                                //       ],
+                                //     )),
+                                // Padding(
+                                //     padding: EdgeInsets.only(
+                                //         left: 25.0, right: 25.0, top: 2.0),
+                                //     child: new Row(
+                                //       mainAxisSize: MainAxisSize.max,
+                                //       children: <Widget>[
+                                //         new Flexible(
+                                //           child: new Text(
+                                //             // decoration: const InputDecoration(
+                                //             //   hintText: "Enter Email ID"),
+                                //             //   enabled: !_status,
+                                //             '$lastName',
+                                //           ),
+                                //         ),
+                                //       ],
+                                //     )),
                                 Padding(
                                     padding: EdgeInsets.only(
                                         left: 25.0, right: 25.0, top: 25.0),
@@ -398,10 +398,10 @@ class MapScreenState extends State<ProfilePagex>
   Future<DocumentSnapshot> getData(userID) async {
 // return await     Firestore.instance.collection('users').document(userID).get();
     DocumentSnapshot result =
-        await FirebaseFirestore.instance.collection('users').doc(userID).get();
+        await FirebaseFirestore.instance.collection('users1').doc(userID).get();
 
-    firstName = result.data()['nickname'] ?? firstName;
-    lastName = result.data()['nickname'] ?? lastName;
+    name = result.data()['nickname'] ?? name;
+    //lastName = result.data()['nickname'] ?? lastName;
     email = result.data()['email'] ?? email;
     phoneNumber = result.data()['phoneNumber'] ?? phoneNumber;
     birthday = result.data()['birthday'] ?? birthday;

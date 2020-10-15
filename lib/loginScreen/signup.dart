@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
-import 'package:ligmone/services/authService.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'loginPage.dart';
@@ -32,24 +30,6 @@ class _SignUpPageState extends State<SignUpPage> {
   // text field state
   void _signUpUser(String email, String password, BuildContext context,
       String firstName, String lastName) async {
-    // bool newUser = true;
-    // AuthService _curretUser = Provider.of<AuthService>(context, listen: false);
-    // try {
-    //   String _returnString =
-    //       await _curretUser.signUpUser(email, password, firstName, lastName);
-    //   if (_returnString == "success") {
-    //     Navigator.of(context).pop();
-    //   } else {
-    //     Scaffold.of(context).showSnackBar(
-    //       SnackBar(
-    //         content: Text(_returnString),
-    //         duration: Duration(seconds: 10),
-    //       ),
-    //     );
-    //   }
-    // } catch (e) {
-    //   print(e);
-    // }
     prefs = await SharedPreferences.getInstance();
 
     this.setState(() {

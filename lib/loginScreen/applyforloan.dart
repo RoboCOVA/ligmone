@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
+import 'package:ligmone/screens/whyLigmone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../homePage.dart';
 
 class ApplyLoan extends StatefulWidget {
   @override
@@ -25,7 +28,7 @@ class _ApplyLoanState extends State<ApplyLoan> {
   TextEditingController _employeeController = TextEditingController();
   TextEditingController _yearlyincome = TextEditingController();
 
-// loan Information
+// Loan Information
   TextEditingController _loanAmout = TextEditingController();
   TextEditingController _chooseLoanTerms = TextEditingController();
   TextEditingController _loanreasonController = TextEditingController();
@@ -242,7 +245,7 @@ class _ApplyLoanState extends State<ApplyLoan> {
                   builder: (context) => RaisedButton(
                       color: Colors.orange[400],
                       child: Text(
-                        'Update',
+                        'Submit',
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () async {
@@ -268,7 +271,13 @@ class _ApplyLoanState extends State<ApplyLoan> {
                             "Employer": _employeeController.text,
                             "Income": _yearlyincome.text
                           });
-                          Navigator.pop(context);
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WhyLigmone(),
+                                //BottomNavigationMenu(currentUserId: id),
+                              ));
                         } else {
                           //  setState(() => loading = true);
 
@@ -289,6 +298,23 @@ class _ApplyLoanState extends State<ApplyLoan> {
         ),
       ),
     );
+  }
+
+  _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (_) => new AlertDialog(
+              title: new Text("Material Dialog"),
+              content: new Text("Hey! I'm Coflutter!"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Close me!'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
   }
 
   Widget _title() {
@@ -357,7 +383,6 @@ class _ApplyLoanState extends State<ApplyLoan> {
                     SizedBox(height: height * .10),
                     _title(),
                     _submitButtonNew(),
-                    // _loginAccountLabel(),
                   ],
                 ),
               ),
