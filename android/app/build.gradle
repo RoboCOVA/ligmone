@@ -46,8 +46,8 @@ android {
         applicationId "loan.finance.ligmone"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 01
-        versionName "1.02"
+        versionCode 02
+        versionName "2.01"
         multiDexEnabled true
     }
     signingConfigs {
