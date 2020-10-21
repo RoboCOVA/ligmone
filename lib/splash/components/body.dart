@@ -66,7 +66,7 @@ class _BodyState extends State<Body> {
                     ),
                     Spacer(flex: 3),
                     DefaultButton(
-                      text: "Continue",
+                      text: "Get Started",
                       // press: () {
                       //   Navigator.push(
                       //     context,
