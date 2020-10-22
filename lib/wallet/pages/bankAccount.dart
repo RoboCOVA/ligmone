@@ -4,8 +4,8 @@ import 'package:ligmone/wallet/pages/overview_page.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
 import 'package:ligmone/wallet/widgets/add_button.dart';
 import 'package:ligmone/wallet/widgets/credit_card.dart';
+import 'package:ligmone/wallet/widgets/dash_card.dart';
 import 'package:ligmone/wallet/widgets/payment_card.dart';
-import 'package:ligmone/wallet/widgets/user_card.dart';
 
 class BankAccountPage extends StatelessWidget {
   @override
@@ -105,8 +105,6 @@ class BankAccountPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Positioned(
-                              top: 40, left: 0, child: _backButton(context)),
                           // IconButton(
                           //   icon: Icon(
                           //     Icons.menu,
@@ -171,7 +169,7 @@ class BankAccountPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Send Money",
+                        "Take action",
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
@@ -196,18 +194,18 @@ class BankAccountPage extends StatelessWidget {
                     child: ListView.builder(
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
-                      itemCount: getUsersCard().length + 1,
+                      itemCount: getIconsCard().length,
                       itemBuilder: (BuildContext context, int index) {
-                        if (index == 0) {
-                          return Padding(
-                              padding: EdgeInsets.only(right: 10),
-                              child: AddButton());
-                        }
+                        // if (index == 0) {
+                        //   return Padding(
+                        //       padding: EdgeInsets.only(right: 10),
+                        //       child: AddButton());
+                        // }
 
                         return Padding(
                           padding: EdgeInsets.only(right: 20),
-                          child: UserCardWidget(
-                            user: getUsersCard()[index - 1],
+                          child: DashCardWidget(
+                            dashCard: getIconsCard()[index],
                           ),
                         );
                       },
@@ -263,7 +261,7 @@ class BankAccountPage extends StatelessWidget {
                     top: 15,
                   ),
                   child: Text(
-                    "23 july 2019",
+                    "23 oct 2021",
                     style: TextStyle(
                       color: Colors.grey,
                     ),
@@ -300,30 +298,6 @@ class BankAccountPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _backButton(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pop(context);
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-              child: Icon(Icons.keyboard_arrow_left, color: Colors.white),
-            ),
-            Text('Back',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500))
-          ],
-        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:ligmone/constants.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/screens/dashboardPage.dart';
 import 'package:ligmone/screens/user_profile.dart';
+import 'package:ligmone/wallet/pages/bankAccount.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class UserAccounts extends StatefulWidget {
@@ -20,13 +21,14 @@ class _UserAccountsState extends State<UserAccounts> {
     return SafeArea(
       minimum: EdgeInsets.fromLTRB(0.0, 14.0, 0.0, 0.0),
       child: Scaffold(
+        backgroundColor: Color(0XFFFEFEFE),
         key: _scaffoldKey,
         // appBar: AppBar(
         //     title: Text("Dashboard"),
         //     leading: new IconButton(
         //         icon: new Icon(Icons.account_circle),
         //         onPressed: () => _scaffoldKey.currentState.openDrawer())),
-        body: DashboardPage(),
+        body: BankAccountPage(),
         drawer: Drawer(
           child: ListView(
             children: <Widget>[

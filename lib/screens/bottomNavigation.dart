@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/chat/homechat.dart';
@@ -153,19 +154,20 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                 )
               },
             ),
-            CustomListMenu(Icons.menu, 'Transactions', () => {}),
-            CustomListMenu(MdiIcons.card, 'Bank Cards', () => {}),
-            CustomListMenu(
-                Icons.notification_important, 'Notifications', () => {}),
-            CustomListMenu(Icons.account_balance, 'Balance', () => {}),
             CustomListMenu(Icons.settings, 'Settings', () => {}),
+            CustomListMenu(
+                MdiIcons.walletMembership, 'Member benefits', () => {}),
+            CustomListMenu(Icons.card_giftcard, 'Invite friends', () => {}),
+            CustomListMenu(Icons.account_balance, 'About', () => {}),
+            CustomListMenu(MdiIcons.fileDocumentEdit, 'Feedback', () => {}),
+            CustomListMenu(MdiIcons.paperRollOutline, 'Legal', () => {}),
             SizedBox(
-              height: 10.0,
+              height: 6.0,
             ),
             FlatButton(
               onPressed: () => _confirmSignOut(context),
               color: Colors.orange,
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 // Replace with a Row for horizontal icon + text
                 children: <Widget>[Icon(Icons.person), Text("Logout")],
@@ -247,7 +249,9 @@ class CustomListMenu extends StatelessWidget {
               children: [
                 Row(
                   children: <Widget>[
-                    Icon(icon),
+                    Icon(
+                      icon,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
