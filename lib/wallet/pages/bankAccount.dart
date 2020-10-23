@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/wallet/data/data.dart';
 import 'package:ligmone/wallet/pages/overview_page.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
-import 'package:ligmone/wallet/widgets/add_button.dart';
 import 'package:ligmone/wallet/widgets/credit_card.dart';
 import 'package:ligmone/wallet/widgets/dash_card.dart';
 import 'package:ligmone/wallet/widgets/payment_card.dart';
