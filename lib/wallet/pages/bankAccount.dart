@@ -1,15 +1,67 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:ligmone/services/financeServicer.dart';
 import 'package:ligmone/wallet/data/data.dart';
+import 'package:ligmone/wallet/models/credit_card_model.dart';
 import 'package:ligmone/wallet/pages/overview_page.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
 import 'package:ligmone/wallet/widgets/credit_card.dart';
 import 'package:ligmone/wallet/widgets/dash_card.dart';
 import 'package:ligmone/wallet/widgets/payment_card.dart';
+import 'package:provider/provider.dart';
 
-class BankAccountPage extends StatelessWidget {
+class BankAccountPage extends StatefulWidget {
+  @override
+  _BankAccountPageState createState() => _BankAccountPageState();
+}
+
+class _BankAccountPageState extends State<BankAccountPage> {
+  List<CreditCardModel1> creditCards = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    //creditCards = FinanceDatabase().creditCardinfo();
+    print('here');
+    // configLocalNotification();
+  }
+
+  @override
+  void dispose() {
+    // creditCards.clear();
+    super.dispose();
+  }
+
+  void updateCreditCard() async {
+    await FirebaseFirestore.instance
+        .collection("users1")
+        .get()
+        .then((querySnapshot) {
+      querySnapshot.docs.forEach((result) {
+        FirebaseFirestore.instance
+            .collection("users1")
+            .doc(result.id)
+            .collection("creditCard")
+            .get()
+            .then((querySnapshot) {
+          querySnapshot.docs.forEach((result) {
+            //print(result.data());
+            CreditCardModel1 creditCard =
+                CreditCardModel1.fromMap(result.data());
+            creditCards.add(creditCard);
+          });
+        });
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
+
+    final cardProvider = Provider.of<FinanceServicer>(context);
+
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
@@ -72,7 +124,8 @@ class BankAccountPage extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 10),
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        itemCount: getCreditCards().length,
+                        //itemCount: getCreditCards().length,
+                        itemCount: cardProvider.creditCards.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.only(right: 10),
@@ -82,7 +135,7 @@ class BankAccountPage extends StatelessWidget {
                                   MaterialPageRoute(
                                       builder: (context) => OverviewPage())),
                               child: CreditCard(
-                                card: getCreditCards()[index],
+                                card: cardProvider.creditCards[index] ?? '',
                               ),
                             ),
                           );

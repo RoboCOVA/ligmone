@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/wallet/models/credit_card_model.dart';
 
 class CreditCard extends StatelessWidget {
-  final CreditCardModel card;
+  final CreditCardModel1 card;
 
   CreditCard({Key key, this.card}) : super(key: key);
 
@@ -36,7 +36,7 @@ class CreditCard extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  card.cardNo,
+                  card.cardNo ?? '',
                   style: Theme.of(context).textTheme.headline.copyWith(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class CreditCard extends StatelessWidget {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(card.expiryDate,
+                    Text(card.expiryDate ?? '',
                         style: Theme.of(context).textTheme.headline.copyWith(
                               color: Colors.black.withOpacity(0.5),
                               fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class CreditCard extends StatelessWidget {
               color: Colors.pink,
               padding: EdgeInsets.all(7),
               child: Image.network(
-                card.logo,
+                card.logo ?? '',
                 width: 50,
                 color: Colors.white,
               ),

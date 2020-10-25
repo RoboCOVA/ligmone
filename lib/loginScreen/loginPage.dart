@@ -5,6 +5,7 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ligmone/loginScreen/signup.dart';
+import 'package:ligmone/models/user.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
@@ -216,6 +217,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<Null> handleSignInEmail() async {
     prefs = await SharedPreferences.getInstance();
+    OurUser _user = OurUser();
+
     email = _emailController.text;
     password = _passwordController.text;
     this.setState(() {
@@ -261,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
         this.setState(() {
           isLoading = false;
         });
-
+        _user.uid = firebaseUser.uid;
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -282,6 +285,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<Null> handleSignInFB() async {
     prefs = await SharedPreferences.getInstance();
     UserCredential userResult;
+    OurUser _user = OurUser();
     this.setState(() {
       isLoading = true;
     });
@@ -339,7 +343,7 @@ class _LoginPageState extends State<LoginPage> {
           this.setState(() {
             isLoading = false;
           });
-
+          _user.uid = firebaseUser.uid;
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -360,7 +364,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<Null> handleSignIn() async {
     prefs = await SharedPreferences.getInstance();
-
+    OurUser _user = OurUser();
     this.setState(() {
       isLoading = true;
     });
@@ -412,7 +416,7 @@ class _LoginPageState extends State<LoginPage> {
         this.setState(() {
           isLoading = false;
         });
-
+        _user.uid = firebaseUser.uid;
         Navigator.push(
             context,
             MaterialPageRoute(

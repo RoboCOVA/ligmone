@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/constants.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
-import 'package:ligmone/screens/dashboardPage.dart';
 import 'package:ligmone/screens/user_profile.dart';
 import 'package:ligmone/wallet/pages/bankAccount.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -55,7 +54,7 @@ class _UserAccountsState extends State<UserAccounts> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Flutter',
+                            'Ligmone',
                             style:
                                 TextStyle(color: Colors.white, fontSize: 20.0),
                           ),
