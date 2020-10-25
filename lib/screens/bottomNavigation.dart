@@ -54,15 +54,6 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
 
     prefs = await SharedPreferences.getInstance();
 
-    // if (isLoggedIn) {
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) =>
-    //             HomeChat(currentUserId: prefs.getString('id'))),
-    //   );
-    // }
-
     this.setState(() {
       isLoading = false;
     });

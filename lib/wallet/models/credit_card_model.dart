@@ -1,9 +1,11 @@
-class CreditCardModel1 {
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class CreditCardModel {
   String id, _cardNo, _expiryDate, _cvv, _logo;
-  CreditCardModel1(this._cardNo, this._logo, this._expiryDate, this._cvv)
+  CreditCardModel(this._cardNo, this._logo, this._expiryDate, this._cvv)
       : assert(_cardNo.length == 16);
 
-  CreditCardModel1.fromMap(Map<String, dynamic> data) {
+  CreditCardModel.fromMap(Map<String, dynamic> data) {
     id = data['id'];
     _cardNo = data['_cardNo'];
     _expiryDate = data['_expiryDate'];
@@ -43,10 +45,4 @@ class CreditCardModel1 {
   String get cvv => _cvv;
 
   String get expiryDate => _expiryDate;
-}
-
-class CreditCardModel {
-  String id, cardNo, expiryDate, cvv, logo;
-  CreditCardModel({this.cardNo, this.logo, this.expiryDate, this.cvv})
-      : assert(cardNo.length == 16);
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/constants.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
@@ -14,7 +15,14 @@ class UserAccounts extends StatefulWidget {
 
 class _UserAccountsState extends State<UserAccounts> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  // Instantiate  firebase
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  void inputData() {
+    final User user = auth.currentUser;
+    final uid = user.uid;
+    // here you write the codes to input the data into firestore
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

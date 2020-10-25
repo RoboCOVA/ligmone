@@ -16,15 +16,11 @@ class BankAccountPage extends StatefulWidget {
 }
 
 class _BankAccountPageState extends State<BankAccountPage> {
-  List<CreditCardModel1> creditCards = [];
+  List<CreditCardModel> creditCards = [];
 
   @override
   void initState() {
     super.initState();
-
-    //creditCards = FinanceDatabase().creditCardinfo();
-    print('here');
-    // configLocalNotification();
   }
 
   @override
@@ -33,34 +29,15 @@ class _BankAccountPageState extends State<BankAccountPage> {
     super.dispose();
   }
 
-  void updateCreditCard() async {
-    await FirebaseFirestore.instance
-        .collection("users1")
-        .get()
-        .then((querySnapshot) {
-      querySnapshot.docs.forEach((result) {
-        FirebaseFirestore.instance
-            .collection("users1")
-            .doc(result.id)
-            .collection("creditCard")
-            .get()
-            .then((querySnapshot) {
-          querySnapshot.docs.forEach((result) {
-            //print(result.data());
-            CreditCardModel1 creditCard =
-                CreditCardModel1.fromMap(result.data());
-            creditCards.add(creditCard);
-          });
-        });
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
-
+    int count = 0;
     final cardProvider = Provider.of<FinanceServicer>(context);
+    if (cardProvider.creditCards.isNotEmpty) {
+      count = cardProvider.creditCards.length;
+      count = count;
+    }
 
     return Scaffold(
       body: ListView(
@@ -116,32 +93,10 @@ class _BankAccountPageState extends State<BankAccountPage> {
                     width: _media.width,
                     child:
                         NotificationListener<OverscrollIndicatorNotification>(
-                      onNotification: (overscroll) {
-                        overscroll.disallowGlow();
-                      },
-                      child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        padding: EdgeInsets.only(bottom: 10),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        //itemCount: getCreditCards().length,
-                        itemCount: cardProvider.creditCards.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.only(right: 10),
-                            child: GestureDetector(
-                              onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => OverviewPage())),
-                              child: CreditCard(
-                                card: cardProvider.creditCards[index] ?? '',
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                            onNotification: (overscroll) {
+                              overscroll.disallowGlow();
+                            },
+                            child: creditPay(count, cardProvider)),
                   ),
                 ),
                 Positioned(
@@ -156,24 +111,7 @@ class _BankAccountPageState extends State<BankAccountPage> {
                     children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          // IconButton(
-                          //   icon: Icon(
-                          //     Icons.menu,
-                          //     color: Colors.white,
-                          //     size: 28,
-                          //   ),
-                          //   onPressed: () => print("Menu"),
-                          // ),
-                          // IconButton(
-                          //   icon: Icon(
-                          //     Icons.notifications_none,
-                          //     color: Colors.white,
-                          //     size: 28,
-                          //   ),
-                          //   onPressed: () => print("notification"),
-                          // ),
-                        ],
+                        children: <Widget>[],
                       ),
                       SizedBox(
                         height: 30,
@@ -352,5 +290,37 @@ class _BankAccountPageState extends State<BankAccountPage> {
         ],
       ),
     );
+  }
+
+  Widget creditPay(int count, var cardProvider) {
+    if (count == 0 || cardProvider.creditCards.isEmpty) {
+      return Container(
+        child: Text(' '),
+      );
+    } else {
+      return ListView.builder(
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.only(bottom: 10),
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        //itemCount: getCreditCards().length,
+        itemCount: count,
+
+        itemBuilder: (context, index) {
+          // if (count == 0) {
+          return Padding(
+            padding: EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => OverviewPage())),
+              child: CreditCard(
+                card: cardProvider.creditCards[index],
+              ),
+            ),
+          );
+          //  } else {}
+        },
+      );
+    }
   }
 }

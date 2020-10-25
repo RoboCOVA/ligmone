@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/wallet/models/credit_card_model.dart';
 
 class CreditCard extends StatelessWidget {
-  final CreditCardModel1 card;
+  final CreditCardModel card;
 
   CreditCard({Key key, this.card}) : super(key: key);
 
