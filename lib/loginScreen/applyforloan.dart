@@ -387,7 +387,7 @@ class _ApplyLoanState extends State<ApplyLoan> {
                 ),
               ),
             ),
-            Positioned(top: 40, left: 0, child: _backButton()),
+            // Positioned(top: 40, left: 0, child: _backButton()),
           ],
         ),
       ),

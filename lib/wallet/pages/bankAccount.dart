@@ -38,7 +38,7 @@ class _BankAccountPageState extends State<BankAccountPage> {
       count = cardProvider.creditCards.length;
       count = count;
     }
-
+    print(count);
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,

@@ -11,8 +11,36 @@ class PaymentCardWidget extends StatefulWidget {
 }
 
 class _PaymentCardWidgetState extends State<PaymentCardWidget> {
+  final icons = [
+    Icons.receipt,
+    Icons.monetization_on,
+    Icons.location_city,
+    Icons.train,
+  ];
+  final colors = [
+    Color(0xFFffd60f),
+    Color(0xFFff415f),
+    Color(0xFF50f3e2),
+    Colors.green,
+  ];
   @override
   Widget build(BuildContext context) {
+    IconData iconData;
+    Color color;
+    if (widget.payment.type == 1) {
+      iconData = icons[0];
+      color = colors[0];
+    } else if (widget.payment.type == 2) {
+      iconData = icons[1];
+      color = colors[1];
+    } else if (widget.payment.type == 3) {
+      iconData = icons[2];
+      color = colors[2];
+    } else if (widget.payment.type == 4) {
+      iconData = icons[3];
+      color = colors[3];
+    }
+
     return Container(
       child: ListTile(
         dense: true,
@@ -26,19 +54,19 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
           child: Material(
             elevation: 10,
             shape: CircleBorder(),
-            shadowColor: widget.payment.color.withOpacity(0.4),
+            shadowColor: color.withOpacity(0.4),
             child: Container(
               height: 50,
               width: 50,
               decoration: BoxDecoration(
-                color: widget.payment.color,
+                color: color,
                 shape: BoxShape.circle,
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Icon(
-                  widget.payment.icon,
-                  color: Colors.white,
+                  iconData,
+                  color: color,
                 ),
               ),
             ),

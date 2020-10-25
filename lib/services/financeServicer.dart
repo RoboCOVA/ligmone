@@ -12,6 +12,7 @@ class FinanceServicer extends ChangeNotifier {
 
   loadProducts() async {
     creditCards = await _finaceServices.getCreditCards();
+
     notifyListeners();
   }
 }

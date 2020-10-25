@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class CreditCardModel {
   String id, _cardNo, _expiryDate, _cvv, _logo;
   CreditCardModel(this._cardNo, this._logo, this._expiryDate, this._cvv)
