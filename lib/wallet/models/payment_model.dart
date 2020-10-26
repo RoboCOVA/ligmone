@@ -1,8 +1,8 @@
 class PaymentModel {
   String _name, _date, _hour;
 
-  double _amount;
-  int _paymentType;
+  var _amount;
+  var _paymentType;
 
   PaymentModel(
       this._name, this._date, this._hour, this._amount, this._paymentType);
@@ -31,7 +31,7 @@ class PaymentModel {
 
   String get hour => _hour;
 
-  double get amount => _amount;
+  int get amount => _amount;
 
   int get type => _paymentType;
 }

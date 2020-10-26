@@ -16,12 +16,14 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
     Icons.monetization_on,
     Icons.location_city,
     Icons.train,
+    Icons.local_hospital,
   ];
   final colors = [
     Color(0xFFffd60f),
     Color(0xFFff415f),
     Color(0xFF50f3e2),
     Colors.green,
+    Colors.lightBlueAccent,
   ];
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,9 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
     } else if (widget.payment.type == 4) {
       iconData = icons[3];
       color = colors[3];
+    } else if (widget.payment.type == 5) {
+      iconData = icons[4];
+      color = colors[4];
     }
 
     return Container(

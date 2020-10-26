@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/root/root.dart';
 import 'package:ligmone/services/authService.dart';
 import 'package:ligmone/services/financeServicer.dart';
+import 'package:ligmone/services/paymentServicer.dart';
 import 'package:ligmone/utils/appTheme.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ void main() async {
     providers: [
       Provider<AuthService>(create: (_) => AuthService()),
       ChangeNotifierProvider.value(value: FinanceServicer.initialize()),
+      ChangeNotifierProvider.value(value: PaymentServicer.initialize()),
       //  Provider<AnotherThing>(create: (_) => AnotherThing()),
     ],
     child: MyApp(),

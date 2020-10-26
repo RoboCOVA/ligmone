@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/services/financeServicer.dart';
+import 'package:ligmone/services/paymentServicer.dart';
 import 'package:ligmone/wallet/data/data.dart';
 import 'package:ligmone/wallet/models/credit_card_model.dart';
 import 'package:ligmone/wallet/pages/overview_page.dart';
@@ -32,13 +32,18 @@ class _BankAccountPageState extends State<BankAccountPage> {
   @override
   Widget build(BuildContext context) {
     final _media = MediaQuery.of(context).size;
-    int count = 0;
+    int count = 0, payCount = 0;
     final cardProvider = Provider.of<FinanceServicer>(context);
     if (cardProvider.creditCards.isNotEmpty) {
       count = cardProvider.creditCards.length;
       count = count;
     }
-    print(count);
+    final paymentProvider = Provider.of<PaymentServicer>(context);
+    if (paymentProvider.paymentHistory.isNotEmpty) {
+      payCount = paymentProvider.paymentHistory.length;
+      payCount = payCount;
+    }
+    //print(count);
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.zero,
@@ -219,7 +224,7 @@ class _BankAccountPageState extends State<BankAccountPage> {
                         width: 20,
                       ),
                       Text(
-                        "Received",
+                        "Payment History",
                         style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
@@ -264,23 +269,7 @@ class _BankAccountPageState extends State<BankAccountPage> {
                       onNotification: (overscroll) {
                         overscroll.disallowGlow();
                       },
-                      child: ListView.separated(
-                        physics: ClampingScrollPhysics(),
-                        shrinkWrap: true,
-                        separatorBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(left: 85.0),
-                            child: Divider(),
-                          );
-                        },
-                        padding: EdgeInsets.zero,
-                        itemCount: getPaymentsCard().length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return PaymentCardWidget(
-                            payment: getPaymentsCard()[index],
-                          );
-                        },
-                      ),
+                      child: paymentHistory(payCount, paymentProvider),
                     ),
                   ],
                 ),
@@ -319,6 +308,32 @@ class _BankAccountPageState extends State<BankAccountPage> {
             ),
           );
           //  } else {}
+        },
+      );
+    }
+  }
+
+  Widget paymentHistory(int payCount, var paymentProvider) {
+    if (payCount == 0 || paymentProvider.paymentHistory.isEmpty) {
+      return Container(
+        child: Text(' '),
+      );
+    } else {
+      return ListView.separated(
+        physics: ClampingScrollPhysics(),
+        shrinkWrap: true,
+        separatorBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 85.0),
+            child: Divider(),
+          );
+        },
+        padding: EdgeInsets.zero,
+        itemCount: payCount,
+        itemBuilder: (BuildContext context, int index) {
+          return PaymentCardWidget(
+            payment: paymentProvider.paymentHistory[index],
+          );
         },
       );
     }
