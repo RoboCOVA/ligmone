@@ -3,6 +3,7 @@ import 'package:ligmone/services/financeServicer.dart';
 import 'package:ligmone/services/paymentServicer.dart';
 import 'package:ligmone/wallet/data/data.dart';
 import 'package:ligmone/wallet/models/credit_card_model.dart';
+import 'package:ligmone/wallet/pages/addExpense.dart';
 import 'package:ligmone/wallet/pages/overview_page.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
 import 'package:ligmone/wallet/widgets/credit_card.dart';
@@ -141,7 +142,10 @@ class _BankAccountPageState extends State<BankAccountPage> {
                               color: Colors.white,
                               size: 36,
                             ),
-                            onPressed: () => print("add"),
+                            onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DropDown())),
                           )
                         ],
                       ),
@@ -230,22 +234,13 @@ class _BankAccountPageState extends State<BankAccountPage> {
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                       ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        "Sent",
-                        style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
-                      ),
+
                       Spacer(),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.grey,
-                        size: 20,
-                      ),
+                      // Icon(
+                      //   Icons.arrow_forward_ios,
+                      //   color: Colors.grey,
+                      //   size: 20,
+                      // ),
                     ],
                   ),
                 ),

@@ -31,14 +31,3 @@ List<DashModel> getIconsCard() {
 
   return iconCard;
 }
-
-List<PaymentModel> getPaymentsCard() {
-  List<PaymentModel> paymentCards = [
-    PaymentModel("Florenti Restaurant", "07-23", "20.04", 251.00, 1),
-    PaymentModel("Transfer To Anna", "07-23", "14.01", 64.00, 2),
-    PaymentModel("Loan To Sanchez", "07-23", "10.04", 1151.00, 3),
-    PaymentModel("Train ticket to Turkey", "07-23", "09.04", 37.00, 4),
-  ];
-
-  return paymentCards;
-}

@@ -56,4 +56,14 @@ class FinanceDatabase {
 
         return paymentInfo;
       });
+  // Future<void> sendExpense(PaymentModel payment) async =>
+  //     await FirebaseFirestore.instance
+  //         .collection("users1")
+  //         .doc(user.uid)
+  //         .collection("expense")
+  //         .add({
+  //       '_name': payment.amount,
+  //       "_amount": payment.amount,
+  //       "_paymentType": payment.type
+  //     }).then((value) => print(value.id));
 }
