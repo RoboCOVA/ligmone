@@ -3,7 +3,7 @@ import 'package:ligmone/services/financeServicer.dart';
 import 'package:ligmone/services/paymentServicer.dart';
 import 'package:ligmone/wallet/data/data.dart';
 import 'package:ligmone/wallet/models/credit_card_model.dart';
-import 'package:ligmone/wallet/pages/addExpense.dart';
+import 'package:ligmone/wallet/pages/addCardExpense.dart';
 import 'package:ligmone/wallet/pages/overview_page.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
 import 'package:ligmone/wallet/widgets/credit_card.dart';
@@ -145,7 +145,7 @@ class _BankAccountPageState extends State<BankAccountPage> {
                             onPressed: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DropDown())),
+                                    builder: (context) => AddCardExpense())),
                           )
                         ],
                       ),
