@@ -99,10 +99,11 @@ class _BankAccountPageState extends State<BankAccountPage> {
                     width: _media.width,
                     child:
                         NotificationListener<OverscrollIndicatorNotification>(
-                            onNotification: (overscroll) {
-                              overscroll.disallowGlow();
-                            },
-                            child: creditPay(count, cardProvider)),
+                      onNotification: (overscroll) {
+                        overscroll.disallowGlow();
+                      },
+                      child: creditPay(count, cardProvider),
+                    ),
                   ),
                 ),
                 Positioned(
@@ -291,18 +292,18 @@ class _BankAccountPageState extends State<BankAccountPage> {
         itemCount: count,
 
         itemBuilder: (context, index) {
-          // if (count == 0) {
-          return Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: GestureDetector(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => OverviewPage())),
-              child: CreditCard(
-                card: cardProvider.creditCards[index],
+          if (count == 0) {
+            return Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OverviewPage())),
+                child: CreditCard(
+                  card: cardProvider.creditCards[index],
+                ),
               ),
-            ),
-          );
-          //  } else {}
+            );
+          } else {}
         },
       );
     }
