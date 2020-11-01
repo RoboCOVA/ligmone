@@ -38,6 +38,7 @@ class _BankAccountPageState extends State<BankAccountPage> {
     if (cardProvider.creditCards.isNotEmpty) {
       count = cardProvider.creditCards.length;
       count = count;
+      print(count);
     }
     final paymentProvider = Provider.of<PaymentServicer>(context);
     if (paymentProvider.paymentHistory.isNotEmpty) {
@@ -278,34 +279,42 @@ class _BankAccountPageState extends State<BankAccountPage> {
   }
 
   Widget creditPay(int count, var cardProvider) {
-    if (count == 0 || cardProvider.creditCards.isEmpty) {
+    if (count == 0 ||
+        cardProvider.creditCards.isEmpty ||
+        cardProvider.creditCards == null) {
       return Container(
-        child: Text(' '),
+        child: Text('Add your card here'),
       );
     } else {
       return ListView.builder(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.only(bottom: 10),
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        //itemCount: getCreditCards().length,
-        itemCount: count,
-
-        itemBuilder: (context, index) {
-          if (count == 0) {
-            return Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: GestureDetector(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => OverviewPage())),
-                child: CreditCard(
-                  card: cardProvider.creditCards[index],
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.only(bottom: 10),
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          //itemCount: getCreditCards().length,
+          itemCount: count,
+          itemBuilder: (context, index) {
+            if (count != null && count >= 2) {
+              return Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: GestureDetector(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OverviewPage())),
+                  child: CreditCard(
+                    card: cardProvider.creditCards[index],
+                  ),
                 ),
-              ),
-            );
-          } else {}
-        },
-      );
+              );
+            } else if (cardProvider.creditCards == null) {
+              return Container(
+                child: Text(''),
+              );
+            } else {
+              return Container(
+                child: Text(''),
+              );
+            }
+          });
     }
   }
 
