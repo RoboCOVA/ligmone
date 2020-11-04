@@ -16,6 +16,7 @@ class AddCreditCardState extends State<AddCreditCard> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _amountController = TextEditingController();
   TextEditingController _cvvController = TextEditingController();
+  TextEditingController _balanceController = TextEditingController();
   User user = FirebaseAuth.instance.currentUser;
 
   @override
@@ -85,8 +86,16 @@ class AddCreditCardState extends State<AddCreditCard> {
                   ),
                   controller: _cvvController,
                   keyboardType: TextInputType.number),
+              SizedBox(height: 20.0),
+              TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Enter your balance',
+                    hintText: 'Enter your balance',
+                  ),
+                  controller: _balanceController,
+                  keyboardType: TextInputType.number),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2 - 80,
+                height: MediaQuery.of(context).size.height / 4 - 80,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -119,6 +128,15 @@ class AddCreditCardState extends State<AddCreditCard> {
                           '_logo':
                               "https://resources.mynewsdesk.com/image/upload/ojf8ed4taaxccncp6pcp.png",
                           '_createDateTime': formatDate,
+                          "_balance": int.parse(_balanceController.text),
+                          "_expense": 0,
+                          "_foodCost": 0,
+                          "_billCost": 0,
+                          "_homeImprovementCost": 0,
+                          "_transportationCost": 0,
+                          "_atmWithdrawl": 0,
+                          "_healthCost": 0,
+                          "_saving": 0
                         }).then((value) => print(value.id));
                         Navigator.pop(context);
                       },

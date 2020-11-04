@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ligmone/services/financeServicer.dart';
 import 'package:ligmone/services/paymentServicer.dart';
 import 'package:ligmone/wallet/data/data.dart';
-import 'package:ligmone/wallet/models/credit_card_model.dart';
+import 'package:ligmone/wallet/models/credit_card_model1.dart';
 import 'package:ligmone/wallet/pages/addCardExpense.dart';
 import 'package:ligmone/wallet/pages/overview_page.dart';
+import 'package:ligmone/wallet/pages/overview_page1.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
 import 'package:ligmone/wallet/widgets/credit_card.dart';
 import 'package:ligmone/wallet/widgets/dash_card.dart';
@@ -17,7 +18,7 @@ class BankAccountPage extends StatefulWidget {
 }
 
 class _BankAccountPageState extends State<BankAccountPage> {
-  List<CreditCardModel> creditCards = [];
+  List<CreditCardModel1> creditCards = [];
 
   @override
   void initState() {
@@ -32,6 +33,8 @@ class _BankAccountPageState extends State<BankAccountPage> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = new DateTime.now();
+    DateTime date = new DateTime(now.year, now.month, now.day);
     final _media = MediaQuery.of(context).size;
     int count = 0, payCount = 0;
     final cardProvider = Provider.of<FinanceServicer>(context);
@@ -139,16 +142,18 @@ class _BankAccountPageState extends State<BankAccountPage> {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 36,
-                            ),
-                            onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AddCardExpense())),
-                          )
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 36,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AddCardExpense()));
+                              })
                         ],
                       ),
                     ],
@@ -253,7 +258,11 @@ class _BankAccountPageState extends State<BankAccountPage> {
                     top: 15,
                   ),
                   child: Text(
-                    "23 oct 2021",
+                    '${date.year.toString()}' +
+                        '-' +
+                        '${date.month.toString()}' +
+                        '-' +
+                        '${date.day.toString()}',
                     style: TextStyle(
                       color: Colors.grey,
                     ),
@@ -294,12 +303,25 @@ class _BankAccountPageState extends State<BankAccountPage> {
           //itemCount: getCreditCards().length,
           itemCount: count,
           itemBuilder: (context, index) {
-            if (count != null && count >= 2) {
+            if (count != null && cardProvider.creditCards != null) {
+              // return Padding(
+              //   padding: EdgeInsets.only(right: 10),
+              //   child: GestureDetector(
+              //     onTap: () => Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) => OverviewPage())),
+              //     child: CreditCard(
+              //       card: cardProvider.creditCards[index],
+              //     ),
+              //   ),
+              // );
               return Padding(
                 padding: EdgeInsets.only(right: 10),
                 child: GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OverviewPage())),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OverviewPage1(
+                              creditCard: cardProvider.creditCards[index]))),
                   child: CreditCard(
                     card: cardProvider.creditCards[index],
                   ),

@@ -74,22 +74,21 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 _menuItem('Shopping \nLoan', FontAwesomeIcons.dollarSign,
                     blueGradient),
-                _menuItem('Staff\nLoan', Icons.work, darkRedGradient),
-                _menuItem(' Micro \n Loans', FontAwesomeIcons.solidMoneyBillAlt,
-                    tealGradient),
+                _menuItem('Personal\nLoan', Icons.person_pin, redGradient),
+                _menuItem('Home\nLoan', FontAwesomeIcons.home, darkRedGradient),
               ],
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                _menuItem('Diaspora\n Account', FontAwesomeIcons.diaspora,
-                    yellowGradient),
+                _menuItem(' Micro \n Loans', FontAwesomeIcons.solidMoneyBillAlt,
+                    tealGradient),
                 _menuItem(
-                    'Insurance\nServices', FontAwesomeIcons.gift, redGradient),
+                    'Auto\nInsurance', FontAwesomeIcons.gift, redGradient),
                 _menuItem(
-                    'Transfer\nYour Loan', Icons.account_box, purpleGradient),
+                    'Business\n Loan', Icons.business_center, purpleGradient),
               ],
             ),
             Row(
@@ -98,43 +97,12 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 _menuItem('Invite new \nborrower', FontAwesomeIcons.coins,
                     yellowGradient),
-                _menuItem('Personal\nLoan', FontAwesomeIcons.personBooth,
-                    redGradient),
-                _menuItem('Merchant \nServices',
-                    FontAwesomeIcons.solidCreditCard, purpleGradient),
+                // _menuItem('Diaspora\n Account', FontAwesomeIcons.diaspora,
+                //     yellowGradient),
+                // _menuItem('Merchant \nServices',
+                //     FontAwesomeIcons.solidCreditCard, purpleGradient),
               ],
             ),
-            // SizedBox(height: 12),
-            // _title('Special Pomotion'),
-            // SizedBox(height: 12),
-            // Column(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: <Widget>[
-            //     _promotionCard(
-            //         'Loans...\n Refer Ligmone Loans. Make Money. Earn 300ETB\n When firends get a ligmone Personal Loan or Shopping Loan.\n They will get 300 ETB too!',
-            //         'assets/profit.png'),
-            //     SizedBox(
-            //       height: 10,
-            //     ),
-            //     _promotionCard(
-            //         'Member Benefits...\nGet support for tackling money problems\n with your partner. There are alot of way to achieve your goals and needs\nGet help from our Financiers\n Make an an Appointment!',
-            //         'assets/cash-back.png'),
-            //     SizedBox(
-            //       height: 10,
-            //     ),
-            //     _promotionCard(
-            //         'Member Experience...\nNo Stress with Ligmone \n Over 2,000 memebers registered for Webinar and virtual advice \n attend member event from anywhere!',
-            //         'assets/experience.png'),
-            //     SizedBox(
-            //       height: 10,
-            //     ),
-            //     _promotionCard(
-            //         'Ligmone Blog...\nSaturday Shoppings, Tips and News!\nLearn more about Money and Finance, lEARN to Control!',
-            //         'assets/financecontrol.jpg'),
-            //   ],
-            // ),
-            // SizedBox(height: 48),
           ],
         ),
       ),
@@ -190,7 +158,7 @@ class _HomePageState extends State<HomePage> {
 
   _menuItem(String title, IconData iconData, LinearGradient gradient) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.35,
+      height: MediaQuery.of(context).size.width * 0.30,
       width: MediaQuery.of(context).size.width * 0.26,
       margin: EdgeInsets.all(4),
       padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),

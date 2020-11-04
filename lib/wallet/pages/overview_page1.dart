@@ -1,30 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/wallet/models/credit_card_model1.dart';
 import 'package:ligmone/wallet/utils/screen_size.dart';
 import 'package:ligmone/wallet/widgets/donut_charts.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:ligmone/wallet/widgets/percent_indicator.dart';
 import 'package:ligmone/wallet/widgets/wave_progress.dart';
 
-var data = [
-  new DataPerItem('Home', 35, Colors.greenAccent),
-  new DataPerItem('Food & Drink', 25, Colors.yellow),
-  new DataPerItem('Hotel & Restaurant', 24, Colors.indigo),
-  new DataPerItem('Travelling', 400, Colors.pinkAccent),
-];
+class OverviewPage1 extends StatefulWidget {
+  OverviewPage1({Key key, this.creditCard}) : super(key: key);
+  final CreditCardModel1 creditCard;
 
-var series = [
-  new charts.Series(
-    domainFn: (DataPerItem clickData, _) => clickData.name,
-    measureFn: (DataPerItem clickData, _) => clickData.percent,
-    colorFn: (DataPerItem clickData, _) => clickData.color,
-    id: 'Item',
-    data: data,
-  ),
-];
+  @override
+  _OverviewPage1State createState() => _OverviewPage1State();
+}
 
-class OverviewPage extends StatelessWidget {
+class _OverviewPage1State extends State<OverviewPage1> {
+  // var data = [
+  //   DataPerItem('Food and Drink', 400, Colors.greenAccent),
+  //   DataPerItem('Bills', 25, Colors.yellow),
+  //   DataPerItem('Home Improvement', 24, Colors.deepPurple),
+  //   DataPerItem('Transportation', 400, Colors.red),
+  //   DataPerItem('ATM Withdrawl', 25, Colors.yellow),
+  //   DataPerItem('Health', 24, Colors.blue),
+  //   DataPerItem('Saving', 400, Colors.pinkAccent),
+  // ];
+
   @override
   Widget build(BuildContext context) {
+    var series = [
+      charts.Series(
+        domainFn: (DataPerItem clickData, _) => clickData.name,
+        measureFn: (DataPerItem clickData, _) => clickData.percent,
+        colorFn: (DataPerItem clickData, _) => clickData.color,
+        id: 'Item',
+        data: [
+          DataPerItem(
+              'Food and Drink', widget.creditCard.food, Colors.greenAccent),
+          DataPerItem('Bills', widget.creditCard.bill, Colors.yellow),
+          DataPerItem(
+              'Home Improvement', widget.creditCard.home, Colors.deepPurple),
+          DataPerItem(
+              'Transportation', widget.creditCard.transport, Colors.red),
+          DataPerItem('ATM Withdrawl', widget.creditCard.atm, Colors.yellow),
+          DataPerItem('Health', widget.creditCard.health, Colors.blue),
+          DataPerItem('Saving', widget.creditCard.saving, Colors.pinkAccent),
+        ],
+      ),
+    ];
+    DateTime now = new DateTime.now();
+    DateTime date = new DateTime(now.year, now.month, now.day);
     final _media = MediaQuery.of(context).size;
     return Scaffold(
       body: ListView(
@@ -69,8 +93,10 @@ class OverviewPage extends StatelessWidget {
           ),
           Row(
             children: <Widget>[
-              colorCard("Cash", 35.170, 1, context, Color(0xFF1b5bff)),
-              colorCard("Credit Debt", 4320, -1, context, Color(0xFFff3f5e)),
+              colorCard("Cash", widget.creditCard.balance.toDouble(), 1,
+                  context, Color(0xFF1b5bff)),
+              colorCard("Expense", widget.creditCard.expense.toDouble(), 1,
+                  context, Color(0xFFff3f5e)),
             ],
           ),
           SizedBox(
@@ -80,7 +106,7 @@ class OverviewPage extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "Spending",
+                  text: "Spending\n",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -89,11 +115,15 @@ class OverviewPage extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: "    July 2018",
+                  text: '${date.year.toString()}' +
+                      '-' +
+                      '${date.month.toString()}' +
+                      '-' +
+                      '${date.day.toString()}',
                   style: TextStyle(
                     color: Colors.grey.shade400,
                     fontWeight: FontWeight.w700,
-                    fontSize: 16,
+                    fontSize: 20,
                     fontFamily: "Varela",
                   ),
                 ),
@@ -105,8 +135,8 @@ class OverviewPage extends StatelessWidget {
               top: 15,
               right: 20,
             ),
-            height:
-                screenAwareSize(_media.longestSide <= 775 ? 180 : 130, context),
+            // height:
+            //     screenAwareSize(_media.longestSide <= 775 ? 180 : 130, context),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(6),
@@ -135,111 +165,115 @@ class OverviewPage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
-                        height: 15,
-                      ),
-                      donutCard(Colors.indigo, "Home"),
-                      donutCard(Colors.yellow, "Food & Drink"),
-                      donutCard(Colors.greenAccent, "Hotel & Restaurant"),
-                      donutCard(Colors.pinkAccent, "Travelling"),
+                      // SizedBox(
+                      //   height: 15,
+                      // ),
+
+                      donutCard(Colors.greenAccent, "Food and Drink"),
+                      donutCard(Colors.yellow, "Bills"),
+                      donutCard(Colors.deepPurple, "Home Improvement"),
+                      donutCard(Colors.red, "Transportation"),
+                      donutCard(Colors.blue, "ATM Withdrawl"),
+                      donutCard(Colors.green, "Health"),
+                      donutCard(Colors.blue, "Saving"),
                     ],
                   ),
                 )
               ],
             ),
           ),
-          SizedBox(
-            height: 30,
-          ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "Budgets",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Varela",
-                  ),
-                ),
-                TextSpan(
-                  text: "    July",
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: "Varela",
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              top: 15,
-              right: 20,
-            ),
-            padding: EdgeInsets.all(10),
-            height: screenAwareSize(45, context),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(6),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade100,
-                  blurRadius: 6,
-                  spreadRadius: 10,
-                )
-              ],
-            ),
-            child: LinearPercentIndicator(
-              width: screenAwareSize(
-                  _media.width - (_media.longestSide <= 775 ? 100 : 160),
-                  context),
-              lineHeight: 20.0,
-              percent: 0.68,
-              backgroundColor: Colors.grey.shade300,
-              progressColor: Color(0xFF1b52ff),
-              animation: true,
-              animateFromLastPercent: true,
-              alignment: MainAxisAlignment.spaceEvenly,
-              animationDuration: 1000,
-              linearStrokeCap: LinearStrokeCap.roundAll,
-              center: Text(
-                "68.0%",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Text(
-            "Cash flow",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              inherit: true,
-              letterSpacing: 0.4,
-            ),
-          ),
-          vaweCard(
-            context,
-            "Earned",
-            200,
-            1,
-            Colors.grey.shade100,
-            Color(0xFF716cff),
-          ),
-          vaweCard(
-            context,
-            "Spent",
-            3210,
-            -1,
-            Colors.grey.shade100,
-            Color(0xFFff596b),
-          ),
+          // SizedBox(
+          //   height: 30,
+          // ),
+          // RichText(
+          //   text: TextSpan(
+          //     children: [
+          //       TextSpan(
+          //         text: "Budgets",
+          //         style: TextStyle(
+          //           color: Colors.black,
+          //           fontSize: 24,
+          //           fontWeight: FontWeight.bold,
+          //           fontFamily: "Varela",
+          //         ),
+          //       ),
+          //       TextSpan(
+          //         text: "    July",
+          //         style: TextStyle(
+          //           color: Colors.grey.shade400,
+          //           fontWeight: FontWeight.w700,
+          //           fontSize: 16,
+          //           fontFamily: "Varela",
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // Container(
+          //   margin: EdgeInsets.only(
+          //     top: 15,
+          //     right: 20,
+          //   ),
+          //   padding: EdgeInsets.all(10),
+          //   height: screenAwareSize(45, context),
+          //   decoration: BoxDecoration(
+          //     color: Colors.white,
+          //     borderRadius: BorderRadius.circular(6),
+          //     boxShadow: [
+          //       BoxShadow(
+          //         color: Colors.grey.shade100,
+          //         blurRadius: 6,
+          //         spreadRadius: 10,
+          //       )
+          //     ],
+          //   ),
+          //   child: LinearPercentIndicator(
+          //     width: screenAwareSize(
+          //         _media.width - (_media.longestSide <= 775 ? 100 : 160),
+          //         context),
+          //     lineHeight: 20.0,
+          //     percent: 0.68,
+          //     backgroundColor: Colors.grey.shade300,
+          //     progressColor: Color(0xFF1b52ff),
+          //     animation: true,
+          //     animateFromLastPercent: true,
+          //     alignment: MainAxisAlignment.spaceEvenly,
+          //     animationDuration: 1000,
+          //     linearStrokeCap: LinearStrokeCap.roundAll,
+          //     center: Text(
+          //       "68.0%",
+          //       style: TextStyle(color: Colors.white),
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 30,
+          // ),
+          // Text(
+          //   "Cash flow",
+          //   style: TextStyle(
+          //     fontSize: 24,
+          //     fontWeight: FontWeight.bold,
+          //     inherit: true,
+          //     letterSpacing: 0.4,
+          //   ),
+          // ),
+          // vaweCard(
+          //   context,
+          //   "Earned",
+          //   200,
+          //   1,
+          //   Colors.grey.shade100,
+          //   Color(0xFF716cff),
+          // ),
+          // vaweCard(
+          //   context,
+          //   "Spent",
+          //   3210,
+          //   -1,
+          //   Colors.grey.shade100,
+          //   Color(0xFFff596b),
+          // ),
         ],
       ),
     );
@@ -337,7 +371,7 @@ class OverviewPage extends StatelessWidget {
           style: TextStyle(
             color: Colors.grey,
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: 16,
             inherit: true,
           ),
           overflow: TextOverflow.ellipsis,
