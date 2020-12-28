@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ligmone/bankAccount/screens/bankAccountHome.dart';
 import 'package:ligmone/chat/homechat.dart';
 
 import 'package:ligmone/loanHome.dart';
@@ -83,7 +84,8 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
       MoneyHomePage(),
       LoanHome(),
       ChatScreen(currentUserId: prefs.getString('id')),
-      UserAccounts(),
+      //UserAccounts(),
+      BankAccountHome(),
 
       // ChatService(widget.currentUserId),
     ];

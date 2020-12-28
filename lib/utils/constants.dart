@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFFFF7643);
+const kPrimaryColor = Color(0xFF1E1E99);
 //const kPrimaryColor = Color(0xFF015FFF);
 const appbarcolor = Color(0xFF1E88E5);
 const kPrimaryLightColor = Color(0xFFFFECDF);
