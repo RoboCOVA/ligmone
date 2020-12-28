@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:ligmone/constants.dart';
+import 'package:ligmone/utils/constants.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/screens/user_profile.dart';
 import 'package:ligmone/wallet/pages/bankAccount.dart';

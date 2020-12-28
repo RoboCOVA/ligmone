@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/chat/homechat.dart';
 
-import 'package:ligmone/homePage.dart';
+import 'package:ligmone/loanHome.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
-import 'package:ligmone/screens/LoansPage.dart';
+import 'package:ligmone/money/moneyHomepage.dart';
 import 'package:ligmone/screens/userAccounts.dart';
 
 import 'package:ligmone/screens/user_profile.dart';
@@ -12,7 +12,7 @@ import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 
 class BottomNavigationMenu extends StatefulWidget {
   final String currentUserId;
@@ -80,26 +80,27 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> _children = [
-      HomePage(),
-      LoansPage(),
-      // ChatService(widget.currentUserId),
+      MoneyHomePage(),
+      LoanHome(),
       ChatScreen(currentUserId: prefs.getString('id')),
       UserAccounts(),
+
+      // ChatService(widget.currentUserId),
     ];
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: <Color>[Colors.blue, kPrimaryColor])),
-          ),
-          backgroundColor: kPrimaryColor,
-          leading: new IconButton(
-              icon: new Icon(Icons.account_circle, color: Colors.white),
-              onPressed: () => _scaffoldKey.currentState.openDrawer())),
+      // key: _scaffoldKey,
+      // appBar: AppBar(
+      //     flexibleSpace: Container(
+      //       decoration: BoxDecoration(
+      //           gradient: LinearGradient(
+      //               begin: Alignment.topLeft,
+      //               end: Alignment.bottomRight,
+      //               colors: <Color>[Colors.blue, kPrimaryColor])),
+      //     ),
+      //     backgroundColor: kPrimaryColor,
+      //     leading: new IconButton(
+      //         icon: new Icon(Icons.account_circle, color: Colors.white),
+      //         onPressed: () => _scaffoldKey.currentState.openDrawer())),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[

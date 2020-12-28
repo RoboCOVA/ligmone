@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ligmone/screens/eligibleCriteria.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 
 class ServiceList extends StatelessWidget {
   @override

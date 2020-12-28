@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:ligmone/constants.dart';
+import 'package:ligmone/utils/constants.dart';
 import 'package:ligmone/services/financeServicer.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ligmone/constants.dart';
+import 'package:ligmone/loginScreen/loginPage.dart';
+import 'package:ligmone/utils/constants.dart';
 import 'package:ligmone/screens/servicesList.dart';
-import 'package:ligmone/size_config.dart';
+import 'package:ligmone/utils/size_config.dart';
 import '../components/default_button.dart';
 import '../components/splash_content.dart';
 
@@ -76,8 +77,7 @@ class _BodyState extends State<Body> {
                       press: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => ServiceList()),
+                          MaterialPageRoute(builder: (context) => LoginPage()),
                         );
                       },
                     ),

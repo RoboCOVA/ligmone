@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ligmone/constants.dart';
+import 'package:ligmone/utils/constants.dart';
 import 'package:ligmone/wallet/models/dash_model.dart';
 import 'package:ligmone/wallet/pages/addCreditCard.dart';
 import 'package:ligmone/wallet/pages/addExpense.dart';

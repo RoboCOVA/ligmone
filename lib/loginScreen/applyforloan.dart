@@ -7,8 +7,6 @@ import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/screens/whyLigmone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../homePage.dart';
-
 class ApplyLoan extends StatefulWidget {
   @override
   _ApplyLoanState createState() => _ApplyLoanState();

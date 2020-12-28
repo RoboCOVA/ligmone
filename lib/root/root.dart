@@ -4,7 +4,7 @@ import 'package:ligmone/screens/bottomNavigation.dart';
 import 'package:ligmone/services/authService.dart';
 import 'package:provider/provider.dart';
 
-import '../splash_screen.dart';
+import '../utils/splash_screen.dart';
 
 enum AuthStatus {
   notLoggin,

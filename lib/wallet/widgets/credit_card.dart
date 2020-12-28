@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ligmone/wallet/models/credit_card_model.dart';
 import 'package:ligmone/wallet/models/credit_card_model1.dart';
 
 class CreditCard extends StatelessWidget {

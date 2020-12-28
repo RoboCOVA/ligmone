@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
-import 'package:ligmone/size_config.dart';
+import 'package:ligmone/utils/size_config.dart';
 
-import '../constants.dart';
+import '../utils/constants.dart';
 
 class EligibleCriteria extends StatefulWidget {
   EligibleCriteria({Key key, this.title}) : super(key: key);
