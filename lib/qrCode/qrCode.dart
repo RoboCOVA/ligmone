@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ligmone/qrCode/generate.dart';
 import 'package:ligmone/qrCode/scan.dart';
-import "package:androidx.core.app.ActivityCompat";
-import "package:androidx.core.content.ContextCompat";
 
 class QRCode extends StatefulWidget {
   @override
