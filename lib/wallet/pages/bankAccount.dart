@@ -304,16 +304,6 @@ class _BankAccountPageState extends State<BankAccountPage> {
           itemCount: count,
           itemBuilder: (context, index) {
             if (count != null && cardProvider.creditCards != null) {
-              // return Padding(
-              //   padding: EdgeInsets.only(right: 10),
-              //   child: GestureDetector(
-              //     onTap: () => Navigator.push(context,
-              //         MaterialPageRoute(builder: (context) => OverviewPage())),
-              //     child: CreditCard(
-              //       card: cardProvider.creditCards[index],
-              //     ),
-              //   ),
-              // );
               return Padding(
                 padding: EdgeInsets.only(right: 10),
                 child: GestureDetector(

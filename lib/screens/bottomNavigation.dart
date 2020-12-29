@@ -6,14 +6,11 @@ import 'package:ligmone/chat/homechat.dart';
 import 'package:ligmone/loanHome.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
 import 'package:ligmone/money/moneyHomepage.dart';
-import 'package:ligmone/screens/userAccounts.dart';
 
 import 'package:ligmone/screens/user_profile.dart';
 import 'package:ligmone/services/patform_alert_dialog.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../utils/constants.dart';
 
 class BottomNavigationMenu extends StatefulWidget {
   final String currentUserId;
@@ -90,19 +87,6 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
       // ChatService(widget.currentUserId),
     ];
     return Scaffold(
-      // key: _scaffoldKey,
-      // appBar: AppBar(
-      //     flexibleSpace: Container(
-      //       decoration: BoxDecoration(
-      //           gradient: LinearGradient(
-      //               begin: Alignment.topLeft,
-      //               end: Alignment.bottomRight,
-      //               colors: <Color>[Colors.blue, kPrimaryColor])),
-      //     ),
-      //     backgroundColor: kPrimaryColor,
-      //     leading: new IconButton(
-      //         icon: new Icon(Icons.account_circle, color: Colors.white),
-      //         onPressed: () => _scaffoldKey.currentState.openDrawer())),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
@@ -200,7 +184,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
           BottomNavigationBarItem(
               icon: Icon(Icons.credit_card, color: Colors.deepOrange, size: 32),
               title: Text(
-                'Money',
+                'Account',
                 style: TextStyle(color: Colors.black),
               )),
         ],

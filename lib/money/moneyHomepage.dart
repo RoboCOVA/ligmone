@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/qrCode/qrCode.dart';
 
 class MoneyHomePage extends StatefulWidget {
   @override
@@ -79,13 +80,19 @@ class _homePageState extends State<MoneyPage> {
                       fontWeight: FontWeight.w800,
                       fontFamily: 'avenir'),
                 ),
-                Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/scanqr.png'))),
-                )
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QRCode()),
+                  ),
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/scanqr.png'))),
+                  ),
+                ),
               ],
             ),
             SingleChildScrollView(

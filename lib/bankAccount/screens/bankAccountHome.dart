@@ -7,6 +7,9 @@ import 'package:ligmone/bankAccount/constants/color_constant.dart';
 import 'package:ligmone/bankAccount/models/card_model.dart';
 import 'package:ligmone/bankAccount/models/operation_model.dart';
 import 'package:ligmone/bankAccount/models/transaction_model.dart';
+import 'package:ligmone/wallet/data/data.dart';
+import 'package:ligmone/wallet/pages/overview_page1.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class BankAccountHome extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class _HomeScreenState extends State<BankAccountHome> {
   // Current selected
   int current = 0;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   // Handle Indicator
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -29,6 +33,7 @@ class _HomeScreenState extends State<BankAccountHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.only(top: 8),
@@ -42,9 +47,9 @@ class _HomeScreenState extends State<BankAccountHome> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     GestureDetector(
-                        onTap: () {
-                          print('Drawer Tapped!');
-                        },
+                        onTap: () => _scaffoldKey.currentState.openDrawer(),
+                        // drawer: AddDrawer();
+
                         child: SvgPicture.asset('assets/svg/drawer_icon.svg')),
                     Container(
                       height: 59,
@@ -80,7 +85,7 @@ class _HomeScreenState extends State<BankAccountHome> {
                     Text(
                       'Amanda Alex',
                       style: GoogleFonts.inter(
-                          fontSize: 30,
+                          fontSize: 24,
                           fontWeight: FontWeight.w700,
                           color: kBlackColor),
                     )
@@ -93,104 +98,111 @@ class _HomeScreenState extends State<BankAccountHome> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 16, right: 6),
-                  itemCount: cards.length,
+                  itemCount: getCreditCards().length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(right: 10),
-                      height: 199,
-                      width: 344,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(28),
-                        color: Color(cards[index].cardBackground),
-                      ),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned(
-                            child:
-                                SvgPicture.asset(cards[index].cardElementTop),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: SvgPicture.asset(
-                                cards[index].cardElementBottom),
-                          ),
-                          Positioned(
-                            left: 29,
-                            top: 48,
-                            child: Text(
-                              'CARD NUMBER',
-                              style: GoogleFonts.inter(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: kWhiteColor),
+                    return GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OverviewPage1(
+                                  creditCard: getCreditCards()[index]))),
+                      child: Container(
+                        margin: EdgeInsets.only(right: 10),
+                        height: 199,
+                        width: 344,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(28),
+                          color: Color(cards[index].cardBackground),
+                        ),
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned(
+                              child:
+                                  SvgPicture.asset(cards[index].cardElementTop),
                             ),
-                          ),
-                          Positioned(
-                            left: 29,
-                            top: 65,
-                            child: Text(
-                              cards[index].cardNumber,
-                              style: GoogleFonts.inter(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: kWhiteColor),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: SvgPicture.asset(
+                                  cards[index].cardElementBottom),
                             ),
-                          ),
-                          Positioned(
-                            right: 21,
-                            top: 35,
-                            child: Image.asset(
-                              cards[index].cardType,
-                              width: 27,
-                              height: 27,
+                            Positioned(
+                              left: 29,
+                              top: 48,
+                              child: Text(
+                                'CARD NUMBER',
+                                style: GoogleFonts.inter(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: kWhiteColor),
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            left: 29,
-                            bottom: 45,
-                            child: Text(
-                              'CARD HOLDERNAME',
-                              style: GoogleFonts.inter(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: kWhiteColor),
+                            Positioned(
+                              left: 29,
+                              top: 65,
+                              child: Text(
+                                cards[index].cardNumber,
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: kWhiteColor),
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            left: 29,
-                            bottom: 21,
-                            child: Text(
-                              cards[index].user,
-                              style: GoogleFonts.inter(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: kWhiteColor),
+                            Positioned(
+                              right: 21,
+                              top: 35,
+                              child: Image.asset(
+                                cards[index].cardType,
+                                width: 27,
+                                height: 27,
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            left: 202,
-                            bottom: 45,
-                            child: Text(
-                              'EXPIRY DATE',
-                              style: GoogleFonts.inter(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: kWhiteColor),
+                            Positioned(
+                              left: 29,
+                              bottom: 45,
+                              child: Text(
+                                'CARD HOLDERNAME',
+                                style: GoogleFonts.inter(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: kWhiteColor),
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            left: 202,
-                            bottom: 21,
-                            child: Text(
-                              cards[index].cardExpired,
-                              style: GoogleFonts.inter(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: kWhiteColor),
+                            Positioned(
+                              left: 29,
+                              bottom: 21,
+                              child: Text(
+                                cards[index].user,
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: kWhiteColor),
+                              ),
                             ),
-                          )
-                        ],
+                            Positioned(
+                              left: 202,
+                              bottom: 45,
+                              child: Text(
+                                'EXPIRY DATE',
+                                style: GoogleFonts.inter(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: kWhiteColor),
+                              ),
+                            ),
+                            Positioned(
+                              left: 202,
+                              bottom: 21,
+                              child: Text(
+                                cards[index].cardExpired,
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: kWhiteColor),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -316,14 +328,14 @@ class _HomeScreenState extends State<BankAccountHome> {
                                 Text(
                                   transactions[index].name,
                                   style: GoogleFonts.inter(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: kBlackColor),
                                 ),
                                 Text(
                                   transactions[index].date,
                                   style: GoogleFonts.inter(
-                                      fontSize: 15,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.w400,
                                       color: kGreyColor),
                                 )
@@ -336,7 +348,7 @@ class _HomeScreenState extends State<BankAccountHome> {
                             Text(
                               transactions[index].amount,
                               style: GoogleFonts.inter(
-                                  fontSize: 15,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w700,
                                   color: kBlueColor),
                             )
@@ -351,6 +363,7 @@ class _HomeScreenState extends State<BankAccountHome> {
           ),
         ),
       ),
+      drawer: AddDrawer(),
     );
   }
 }
@@ -404,11 +417,95 @@ class _OperationCardState extends State<OperationCard> {
             widget.operation,
             textAlign: TextAlign.center,
             style: GoogleFonts.inter(
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: widget.isSelected ? kWhiteColor : kBlueColor),
           )
         ],
+      ),
+    );
+  }
+}
+
+class AddDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          DrawerHeader(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: <Color>[Colors.deepOrange, Colors.orangeAccent])),
+              child: Container(
+                child: Column(
+                  children: [
+                    Material(
+                      borderRadius: BorderRadius.all(Radius.circular(80.0)),
+                      elevation: 10,
+                    ),
+                  ],
+                ),
+              )),
+          CustomListMenu(
+            MdiIcons.fileDocument,
+            'Transactions',
+            () => {},
+          ),
+          CustomListMenu(
+            MdiIcons.home,
+            'Balance',
+            () => {},
+          ),
+          CustomListMenu(MdiIcons.bank, 'Bank Cards', () => {}),
+          CustomListMenu(MdiIcons.homeAnalytics, 'Credit Score', () => {}),
+          CustomListMenu(MdiIcons.creditCard, 'Payments', () => {}),
+          CustomListMenu(Icons.phone, 'Support', () => {}),
+        ],
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class CustomListMenu extends StatelessWidget {
+  IconData icon;
+  String text;
+  Function onTap;
+  CustomListMenu(this.icon, this.text, this.onTap);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.grey.shade400))),
+        child: InkWell(
+          splashColor: Colors.deepOrange,
+          onTap: onTap,
+          child: Container(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: <Widget>[
+                    Icon(icon),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        text,
+                        style: TextStyle(fontSize: 14.0),
+                      ),
+                    ),
+                  ],
+                ),
+                Icon(Icons.arrow_right),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

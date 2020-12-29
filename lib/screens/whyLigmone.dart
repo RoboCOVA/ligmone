@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/screens/bottomNavigation.dart';
 
-import 'package:ligmone/screens/servicesList.dart';
 import 'package:ligmone/utils/size_config.dart';
 import 'package:ligmone/splash/components/default_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';

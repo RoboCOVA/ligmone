@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ligmone/wallet/models/credit_card_model1.dart';
 import 'package:ligmone/wallet/models/dash_model.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -14,4 +15,15 @@ List<DashModel> getIconsCard() {
   ];
 
   return iconCard;
+}
+
+List<CreditCardModel1> getCreditCards() {
+  List<CreditCardModel1> cardinfo = [
+    CreditCardModel1("1234567890123456", " ", "04/22", "576", 434, 670, 656,
+        334, 1113, 34343, 532, 222, 111),
+    CreditCardModel1("1234567890123456", " ", "04/22", "576", 434, 670, 656,
+        334, 1113, 34343, 532, 222, 111),
+  ];
+
+  return cardinfo;
 }
