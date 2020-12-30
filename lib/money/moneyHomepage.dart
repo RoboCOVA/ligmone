@@ -1,6 +1,7 @@
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ligmone/qrCode/generate.dart';
 import 'package:ligmone/qrCode/scanQRCode.dart';
 //import 'package:ligmone/qrCode/qrCode.dart';
 
@@ -155,7 +156,13 @@ class _MoneyPageState extends State<MoneyPage> {
       floatingActionButton: FloatingActionButton.extended(
         icon: Icon(Icons.camera_alt),
         label: Text("Scan"),
-        onPressed: _scanQR,
+        // onPressed: _scanQR,
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: ((builder) => bottomSheet()),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -228,6 +235,47 @@ class _MoneyPageState extends State<MoneyPage> {
                 fontFamily: 'avenir',
                 fontWeight: FontWeight.w700),
           )
+        ],
+      ),
+    );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Scan or Generate",
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.camera_alt),
+              onPressed: _scanQR,
+              label: Text("Scan"),
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.image),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GenerateScreen()),
+                );
+              },
+              label: Text("QR Code"),
+            ),
+          ])
         ],
       ),
     );
