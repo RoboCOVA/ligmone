@@ -1,5 +1,8 @@
+import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
-import 'package:ligmone/qrCode/qrCode.dart';
+import 'package:flutter/services.dart';
+import 'package:ligmone/qrCode/scanQRCode.dart';
+//import 'package:ligmone/qrCode/qrCode.dart';
 
 class MoneyHomePage extends StatefulWidget {
   @override
@@ -18,10 +21,38 @@ class _HomePageState extends State<MoneyHomePage> {
 
 class MoneyPage extends StatefulWidget {
   @override
-  _homePageState createState() => _homePageState();
+  _MoneyPageState createState() => _MoneyPageState();
 }
 
-class _homePageState extends State<MoneyPage> {
+class _MoneyPageState extends State<MoneyPage> {
+  String result = "Hey there !";
+  Future _scanQR() async {
+    try {
+      String qrResult = await BarcodeScanner.scan();
+      setState(() {
+        result = qrResult;
+      });
+    } on PlatformException catch (ex) {
+      if (ex.code == BarcodeScanner.CameraAccessDenied) {
+        setState(() {
+          result = "Camera permission was denied";
+        });
+      } else {
+        setState(() {
+          result = "Unknown Error $ex";
+        });
+      }
+    } on FormatException {
+      setState(() {
+        result = "You pressed the back button before scanning anything";
+      });
+    } catch (ex) {
+      setState(() {
+        result = "Unknown Error $ex";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +114,7 @@ class _homePageState extends State<MoneyPage> {
                 GestureDetector(
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => QRCode()),
+                    MaterialPageRoute(builder: (context) => ScanQRCode()),
                   ),
                   child: Container(
                     height: 60,
@@ -121,6 +152,12 @@ class _homePageState extends State<MoneyPage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.camera_alt),
+        label: Text("Scan"),
+        onPressed: _scanQR,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

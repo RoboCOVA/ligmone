@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ligmone/bankAccount/screens/bankAccountHome.dart';
-import 'package:ligmone/chat/homechat.dart';
+//import 'package:ligmone/chat/homechat.dart';
 
 import 'package:ligmone/loanHome.dart';
 import 'package:ligmone/loginScreen/loginPage.dart';
@@ -80,7 +80,7 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
     final List<Widget> _children = [
       MoneyHomePage(),
       LoanHome(),
-      ChatScreen(currentUserId: prefs.getString('id')),
+      //  ChatScreen(currentUserId: prefs.getString('id')),
       //UserAccounts(),
       BankAccountHome(),
 
@@ -175,12 +175,12 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
                 'Loans',
                 style: TextStyle(color: Colors.black),
               )),
-          BottomNavigationBarItem(
-              icon: Icon(MdiIcons.message, color: Colors.deepOrange, size: 32),
-              title: Text(
-                'Chat',
-                style: TextStyle(color: Colors.black),
-              )),
+          // BottomNavigationBarItem(
+          //     icon: Icon(MdiIcons.message, color: Colors.deepOrange, size: 32),
+          //     title: Text(
+          //       'Chat',
+          //       style: TextStyle(color: Colors.black),
+          //     )),
           BottomNavigationBarItem(
               icon: Icon(Icons.credit_card, color: Colors.deepOrange, size: 32),
               title: Text(
