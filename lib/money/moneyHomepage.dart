@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ligmone/qrCode/generate.dart';
 import 'package:ligmone/qrCode/scanQRCode.dart';
+import 'package:ligmone/qrCode/userContacts.dart';
 //import 'package:ligmone/qrCode/qrCode.dart';
 
 class MoneyHomePage extends StatefulWidget {
@@ -173,7 +174,15 @@ class _MoneyPageState extends State<MoneyPage> {
       children: [
         Expanded(
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              if (img == "sendMoney") {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserContacts(),
+                    ));
+              }
+            },
             child: Container(
               margin: EdgeInsets.all(4),
               decoration: BoxDecoration(

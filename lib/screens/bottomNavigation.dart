@@ -83,8 +83,6 @@ class _BottomNavigationMenuState extends State<BottomNavigationMenu> {
       //  ChatScreen(currentUserId: prefs.getString('id')),
       //UserAccounts(),
       BankAccountHome(),
-
-      // ChatService(widget.currentUserId),
     ];
     return Scaffold(
       drawer: Drawer(
